@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Aku adalah manusia tampan
+// Aku adalah manusia tampanaaaaa
