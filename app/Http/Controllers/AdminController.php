@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\modelKategori;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,7 +11,14 @@ class AdminController extends Controller
     ///fungsi untuk menampilkan form tambah kategori
     public function kategori()
     {
-
+        // $result = Kategori::create([
+        //     'kode_kategori' => $req->nl,
+        //     'nama_kategori' => $req->uname,
+        //     'nomor_telepon' => $req->nt,
+        //     'alamat' => $req->almt,
+        //     'email' => $req->eml_rgs,
+        //     'password' => $req->psw,
+        // ]);
         return view('fitur_admin.tambah_kategori');
     }
 
@@ -23,8 +32,10 @@ class AdminController extends Controller
     //fungsi untuk menampilkan halaman list kategori
     public function list_kategori()
     {
-        
-        return view('fitur_admin.kategori');
+        $result = Kategori::all();
+        $param = [];
+        $param['result'] = $result;
+        return view('fitur_admin.kategori', $param);
     }
 
     //fungsi untuk menampilkan halaman barang

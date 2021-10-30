@@ -38,13 +38,27 @@
 
                 <tbody>
                     <tr>
-                        {{-- @foreach ($data as $item) --}}
+                        {{-- @foreach ($result as $item)
                         <td>K0001</td>
                         <td>Produk Makanan</td>
                         <td style="text-align:center"><a href="/admin/kategori"><button type="button" class="btn btn-warning">Edit</button></a></td>
                         <td style="text-align:center"><a href="/admin/listkategori"><button type="button" class="btn btn-danger">Hapus</button></a></td>
-                        {{-- @endforeach --}}
-                    </tr>
+                        @endforeach --}}
+                        @if (null != $result)
+                            @foreach ($result as $item)
+                                <tr>
+                                    <td>{{ $item->kode_kategori }}</td>
+                                    <td>{{ $item->nama_kategori }}</td>
+                                    <td style="text-align:center"><a href="/admin/kategori"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                    <td style="text-align:center"><a href="/admin/listkategori"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7">No Staff List</td>
+                            </tr>
+                        @endif
+                            </tr>
                 </tbody>
             </table>
     </div>
