@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function () {
     //kategori
     Route::get('/kategori', [AdminController::class, 'kategori']);
     Route::post('/kategori', [AdminController::class, 'tambah_kategori']);
+    Route::get('/listkategori', [AdminController::class, 'list_kategori']);
 
     //barang
     Route::get('/barang', [AdminController::class, 'barang']);

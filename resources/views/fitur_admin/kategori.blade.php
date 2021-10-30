@@ -20,7 +20,7 @@
                         <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Kategori</h4>
                     </div>
                     <div class="col-2">
-                        <a href="#"><button type="button" class="btn btn-success">Tambah Kategori</button></a>
+                        <a href="/admin/kategori"><button type="button" class="btn btn-success">Tambah Kategori</button></a>
                     </div>
                 </div>
             </div>
@@ -30,46 +30,21 @@
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>Kode Kategori</th>
                         <th style="width: 700px;">Nama Kategori</th>
-                        <th colspan="2">Aksi</th>
+                        <th style="text-align:center" colspan="2">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
                         {{-- @foreach ($data as $item) --}}
-                        <td>1</td>
+                        <td>K0001</td>
                         <td>Produk Makanan</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                        <td style="text-align:center"><a href="/admin/kategori"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                        <td style="text-align:center"><a href="/admin/listkategori"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                         {{-- @endforeach --}}
                     </tr>
-                            {{-- <tr style="border: 1 px solid black;">
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">1</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">Produk Makanan</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td> --}}
-
-
-                                {{-- <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{$loop ->index + 1}}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{ $item->nama_karyawan }}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{ $item->alamat_karyawan }}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{ $item->telepon_karyawan }}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{ $item->jabatan_karyawan }}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{ $item->username_karyawan }}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">{{ $item->password_karyawan }}</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;"><a href="/admin/karyawan/{{$item->id_karyawan}}"><button>Edit</button></a></td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;"><a href="/admin/karyawan/delete/{{$item->id_karyawan}}"><button>Delete</button></a></td> --}}
-                            {{-- </tr>
-                            <tr>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">1</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;">Produk Makanan</td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                                <td style="border:1px solid black; text-align:center; padding:10px; background-color:white;"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
-
-                            </tr> --}}
-                        {{-- @endforeach --}}
                 </tbody>
             </table>
     </div>

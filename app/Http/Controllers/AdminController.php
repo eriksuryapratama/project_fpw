@@ -6,17 +6,24 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    ///fungsi untuk menampilkan halaman Admin
+    ///fungsi untuk menampilkan form tambah kategori
     public function kategori()
     {
 
-        return view('fitur_admin.kategori');
+        return view('fitur_admin.tambah_kategori');
     }
 
     //fungsi untuk tambah admin
     public function tambah_kategori()
     {
 
+        return redirect('admin/kategori');
+    }
+
+    //fungsi untuk menampilkan halaman list kategori
+    public function list_kategori()
+    {
+        
         return view('fitur_admin.kategori');
     }
 
@@ -51,7 +58,6 @@ class AdminController extends Controller
     //fungsi untuk menampilkan halaman pegawai
     public function pegawai()
     {
-
         return view('fitur_admin.pegawai');
     }
 
@@ -61,6 +67,4 @@ class AdminController extends Controller
 
         return view('fitur_admin.pegawai');
     }
-
-
 }
