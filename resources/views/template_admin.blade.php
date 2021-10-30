@@ -13,15 +13,15 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Langar&family=Russo+One&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
-
     <title>Admin</title>
 </head>
 <body style="background-color:#5b7d87">
 
     @include('template_headerAdmin')
+
+    <br>
+
+    @yield('judul')
 
     <br>
 

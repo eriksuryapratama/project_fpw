@@ -25,11 +25,24 @@ Route::get('/login' , [SiteController::class, 'login']);
 Route::post('/login' , [SiteController::class, 'cekLogin']);
 
 //ADMIN
-//ADMIN
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'kategori']);
+
+    //kategori
     Route::get('/kategori', [AdminController::class, 'kategori']);
     Route::post('/kategori', [AdminController::class, 'tambah_kategori']);
+
+    //barang
+    Route::get('/barang', [AdminController::class, 'barang']);
+    Route::post('/barang', [AdminController::class, 'tambah_barang']);
+
+    //supplier
+    Route::get('/supplier', [AdminController::class, 'supplier']);
+    Route::post('/supplier', [AdminController::class, 'tambah_supplier']);
+
+    //pegawai
+    Route::get('/pegawai', [AdminController::class, 'pegawai']);
+    Route::post('/pegawai', [AdminController::class, 'tambah_pegawai']);
 });
 
-// Aku adalah manusia tampanaaaaa
+//PEGAWAI

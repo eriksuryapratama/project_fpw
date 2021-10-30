@@ -27,20 +27,6 @@
 
             <br>
 
-            {{-- <form action="/admin/carikaryawan" method="GET">
-                <select name="kategori">
-                    <option value="" disabled selected>Cari menurut...</option>
-                    <option value="snama">Nama karyawan</option>
-                    <option value="salamat">Alamat karyawan</option>
-                    <option value="stelepon">Telepon karyawan</option>
-                </select>
-                <br><br>
-                <input type="text" name="cari" placeholder="Search.." value="{{ old('cari') }}">
-                <input type="submit" value="Cari">
-            </form> --}}
-
-            <br>
-
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
@@ -87,18 +73,4 @@
                 </tbody>
             </table>
     </div>
-
-    <!-- DATATABLES LIBRARY -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
-
-    <!-- FUNCTION DATATABLES -->
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable();
-        });
-    </script>
 @endsection
