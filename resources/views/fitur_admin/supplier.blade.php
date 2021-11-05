@@ -20,7 +20,7 @@
                         <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Supplier</h4>
                     </div>
                     <div class="col-2">
-                        <a href="#"><button type="button" class="btn btn-success">Tambah Supplier</button></a>
+                        <a href="/admin/supplier"><button type="button" class="btn btn-success">Tambah Supplier</button></a>
                     </div>
                 </div>
             </div>
@@ -34,23 +34,27 @@
                         <th style="">Nama</th>
                         <th style="">Alamat</th>
                         <th style="">Kota</th>
-                        <th style="">Username</th>
                         <th style="text-align:center" colspan="2">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        {{-- @foreach ($data as $item) --}}
-                        <td>S0001</td>
-                        <td>PT. Sumber Jaya Sentosa</td>
-                        <td>Jl. Raya Ahmad Yani No. 100</td>
-                        <td>Surabaya</td>
-                        <td>sumberjaya</td>
-                        <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
-                        {{-- @endforeach --}}
-                    </tr>
+                    @if (null != $result)
+                        @foreach ($result as $item)
+                            <tr>
+                                <td>{{ $item->kode_supplier }}</td>
+                                <td>{{ $item->nama_supplier }}</td>
+                                <td>{{ $item->alamat_supplier }}</td>
+                                <td>{{ $item->kota_supplier }}</td>
+                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6">Tidak ada daftar Supplier</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\modelKategori;
+use App\Models\Supplier;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -77,14 +78,50 @@ class AdminController extends Controller
     public function supplier()
     {
 
-        return view('fitur_admin.supplier');
+        return view('fitur_admin.tambah_supplier');
     }
 
     //fungsi untuk tambah supplier
-    public function tambah_supplier()
+    public function tambah_supplier(Request $request)
     {
+        //setting rule
+        $rules = [
+            'nama_supplier' => 'required',
+            'alamat_supplier' => 'required',
+            'kota_supplier' => 'required'
+        ];
 
-        return view('fitur_admin.supplier');
+        //seting custom message
+        $custom_msg = [
+            'required' => ':attribute harus diisi!',
+        ];
+
+        //validasi
+        $this->validate($request, $rules, $custom_msg);
+
+        //buat kode supplier
+        $jum = Supplier::select(DB::raw('count(*) as nama_supplier'))->first();
+        $kd_supplier = "S".str_pad((intval($jum->nama_supplier) + 1),4,"0",STR_PAD_LEFT);
+
+        //input ke database
+        $supplier = new Supplier();
+        $supplier->kode_supplier = $kd_supplier;
+        $supplier->nama_supplier = $request->input('nama_supplier');
+        $supplier->alamat_supplier = $request->input('alamat_supplier');
+        $supplier->kota_supplier = $request->input('kota_supplier');
+        $supplier->save();
+
+        return redirect('admin/listsupplier');
+    }
+
+    //fungsi untuk menampilkan halaman list supplier
+    public function list_supplier()
+    {
+       $result = Supplier::all();
+       $param = [];
+       $param['result'] = $result;
+
+       return view('fitur_admin.supplier', $param);
     }
 
     /////////////////////////////////////////////////////////////////////////
