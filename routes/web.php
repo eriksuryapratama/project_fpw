@@ -42,8 +42,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/supplier', [AdminController::class, 'tambah_supplier']);
 
     //pegawai
-    Route::get('/pegawai', [AdminController::class, 'pegawai']);
-    Route::post('/pegawai', [AdminController::class, 'tambah_pegawai']);
+    Route::get('/user', [AdminController::class, 'user']);
+    Route::post('/user', [AdminController::class, 'tambah_user']);
+    Route::get('/listuser', [AdminController::class, 'list_user']);
+
 });
 
 //PEGAWAI

@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'pegawai_guard' => [
+            'driver' => 'session',
+            'provider' => 'pegawais',
+        ],
     ],
 
     /*
@@ -64,11 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'pegawais' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Users::class,
+        ],
     ],
 
     /*
