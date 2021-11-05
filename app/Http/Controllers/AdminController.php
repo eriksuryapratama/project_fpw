@@ -18,10 +18,32 @@ class AdminController extends Controller
     }
 
     //fungsi untuk tambah kategori
-    public function tambah_kategori()
+    public function tambah_kategori(Request $request)
     {
+        //setting rule
+        $rules = [
+            'nama_kategori' => 'required'
+        ];
 
-        return redirect('admin/kategori');
+        //seting custom message
+        $custom_msg = [
+            'required' => ':attribute harus diisi!',
+        ];
+
+        //validasi
+        $this->validate($request, $rules, $custom_msg);
+
+        //buat kode user
+        $jum = Kategori::select(DB::raw('count(*) as nama_kategori'))->first();
+        $kd_kategori = "K".str_pad((intval($jum->nama_kategori) + 1),4,"0",STR_PAD_LEFT);
+
+        //input ke database
+        $kategori = new Kategori();
+        $kategori->kode_kategori = $kd_kategori;
+        $kategori->nama_kategori = $request->input('nama_kategori');
+        $kategori->save();
+
+        return redirect('admin/listkategori');
     }
 
     //fungsi untuk menampilkan halaman list kategori

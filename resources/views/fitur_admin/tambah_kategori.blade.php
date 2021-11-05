@@ -15,7 +15,7 @@
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Nama Kategori</label>
-                            <input type="text" name="nama" class="form-control" id="" value="" placeholder="Masukkan nama kategori...">
+                            <input type="text" name="nama_kategori" class="form-control" id="" value="" placeholder="Masukkan nama kategori...">
                         </div>
 
                         <div class="form-floating mb-3">
