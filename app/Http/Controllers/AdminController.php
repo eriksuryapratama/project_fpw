@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    /////////////////////////////////////////////////////////////////////////
+    ///----------------------------KATEGORI-------------------------------///
+    /////////////////////////////////////////////////////////////////////////
+
     ///fungsi untuk menampilkan form tambah kategori
     public function kategori()
     {
@@ -39,10 +43,9 @@ class AdminController extends Controller
         $kd_kategori = "K".str_pad((intval($jum->nama_kategori) + 1),4,"0",STR_PAD_LEFT);
 
         //input ke database
-        $kategori = new Kategori();
-        $kategori->kode_kategori = $kd_kategori;
-        $kategori->nama_kategori = $request->input('nama_kategori');
-        $kategori->save();
+        $data = $request->all();
+        $data['kode_kategori'] = $kd_kategori;
+        Kategori::create($data);
 
         return redirect('admin/listkategori');
     }
@@ -56,6 +59,8 @@ class AdminController extends Controller
         return view('fitur_admin.kategori', $param);
     }
 
+    /////////////////////////////////////////////////////////////////////////
+    ///------------------------------BARANG-------------------------------///
     /////////////////////////////////////////////////////////////////////////
 
     //fungsi untuk menampilkan halaman barang
@@ -73,11 +78,12 @@ class AdminController extends Controller
     }
 
     /////////////////////////////////////////////////////////////////////////
+    ///-----------------------------SUPPLIER------------------------------///
+    /////////////////////////////////////////////////////////////////////////
 
     //fungsi untuk menampilkan halaman supplier
     public function supplier()
     {
-
         return view('fitur_admin.tambah_supplier');
     }
 
@@ -104,12 +110,9 @@ class AdminController extends Controller
         $kd_supplier = "S".str_pad((intval($jum->nama_supplier) + 1),4,"0",STR_PAD_LEFT);
 
         //input ke database
-        $supplier = new Supplier();
-        $supplier->kode_supplier = $kd_supplier;
-        $supplier->nama_supplier = $request->input('nama_supplier');
-        $supplier->alamat_supplier = $request->input('alamat_supplier');
-        $supplier->kota_supplier = $request->input('kota_supplier');
-        $supplier->save();
+        $data = $request->all();
+        $data['kode_supplier'] = $kd_supplier;
+        Supplier::create($data);
 
         return redirect('admin/listsupplier');
     }
@@ -125,14 +128,16 @@ class AdminController extends Controller
     }
 
     /////////////////////////////////////////////////////////////////////////
+    ///-------------------------------USER--------------------------------///
+    /////////////////////////////////////////////////////////////////////////
 
-    //fungsi untuk menampilkan form tambah pegawai
+    //fungsi untuk menampilkan form tambah user
     public function user()
     {
         return view('fitur_admin.tambah_pegawai');
     }
 
-    //fungsi untuk tambah pegawai
+    //fungsi untuk tambah user
     public function tambah_user(Request $request)
     {
         //setting rule
@@ -157,19 +162,15 @@ class AdminController extends Controller
         $kd_user = "P".str_pad((intval($jum->nama_user) + 1),4,"0",STR_PAD_LEFT);
 
         //input ke database
-        $user = new Users();
-        $user->kode_user = $kd_user;
-        $user->nama_user = $request->input('nama_user');
-        $user->alamat_user = $request->input('alamat_user');
-        $user->status_user = $request->input('status_user');
-        $user->username = $request->input('username');
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+        $data = $request->all();
+        $data['kode_user'] = $kd_user;
+        $data['password'] = Hash::make($data['password']);
+        Users::create($data);
 
         return redirect('admin/listuser');
     }
 
-     //fungsi untuk menampilkan halaman list kategori
+     //fungsi untuk menampilkan halaman list user
      public function list_user()
      {
         $result = Users::all();

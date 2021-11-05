@@ -13,4 +13,9 @@ class Kategori extends Model
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
+
+    protected $fillable = [
+        'kode_kategori',
+        'nama_kategori'
+    ];
 }

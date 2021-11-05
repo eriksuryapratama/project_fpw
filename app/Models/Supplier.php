@@ -13,4 +13,11 @@ class Supplier extends Model
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
+
+    protected $fillable = [
+        'kode_supplier',
+        'nama_supplier',
+        'alamat_supplier',
+        'kota_supplier'
+    ];
 }

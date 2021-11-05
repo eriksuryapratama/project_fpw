@@ -1,6 +1,6 @@
 {{-- Ini adalah template header pada saat login admin --}}
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar fixed-top navbar-expand-lg navbar-light bg-light">
         {{-- Navbar --}}
 
 

@@ -19,13 +19,17 @@
 
     @include('template_headerAdmin')
 
-    <br>
+    <br><br><br><br>
 
     @yield('judul')
 
     <br>
 
     @yield('konten')
+
+    <br><br>
+
+    @include('template_footer')
 
 </body>
 </html>

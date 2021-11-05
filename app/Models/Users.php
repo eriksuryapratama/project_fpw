@@ -15,4 +15,13 @@ class Users extends Authenticatable
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
+
+    protected $fillable = [
+        'kode_user',
+        'nama_user',
+        'alamat_user',
+        'status_user',
+        'username',
+        'password'
+    ];
 }
