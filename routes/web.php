@@ -22,7 +22,7 @@ Route::get('/', function () {
 //LOGIN
 Route::get('/' , [SiteController::class, 'login']);
 Route::get('/login' , [SiteController::class, 'login']);
-Route::post('/login' , [SiteController::class, 'cekLogin']);
+Route::post('/login' , [SiteController::class, 'do_login']);
 
 //ADMIN
 Route::prefix('admin')->group(function () {

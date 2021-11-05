@@ -10,9 +10,6 @@
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5" style="font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:white;">Log In</h5>
                         <form action="" method="POST">
-                            @if (Session::has('message'))
-                                {{ Session::get('message') }}
-                            @endif
                             @csrf
                             <div class="form-floating mb-3">
                                 <label for="" style="color: white">Username</label>
@@ -28,7 +25,6 @@
                                 <input type="submit" name="btn_login" class="btn btn-primary btn-login text-uppercase fw-bold" value="Login">
                             </div>
                         </form>
-
                         {{-- Pesan eror --}}
                         @if ($errors->any())
                             <ul style="color:red;">
@@ -37,7 +33,6 @@
                                 @endforeach
                             </ul>
                         @endif
-
                     </div>
                 </div>
             </div>
