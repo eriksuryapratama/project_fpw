@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function () {
     //barang
     Route::get('/barang', [AdminController::class, 'barang']);
     Route::post('/barang', [AdminController::class, 'tambah_barang']);
+    Route::get('/listbarang', [AdminController::class, 'list_barang']);
 
     //supplier
     Route::get('/supplier', [AdminController::class, 'supplier']);

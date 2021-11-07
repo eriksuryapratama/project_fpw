@@ -20,7 +20,7 @@
                         <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Barang</h4>
                     </div>
                     <div class="col-2">
-                        <a href="#"><button type="button" class="btn btn-success">Tambah Barang</button></a>
+                        <a href="/admin/barang"><button type="button" class="btn btn-success">Tambah Barang</button></a>
                     </div>
                 </div>
             </div>
@@ -42,19 +42,25 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        {{-- @foreach ($data as $item) --}}
-                        <td>B0001</td>
-                        <td>Beras Cap Gajah</td>
-                        <td>Produk Makanan</td>
-                        <td>Kilogram</td>
-                        <td>50</td>
-                        <td>50000</td>
-                        <td>60000</td>
-                        <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
-                        {{-- @endforeach --}}
-                    </tr>
+                    @if (null != $result)
+                        @foreach ($result as $item)
+                            <tr>
+                                <td>{{ $item->kode_barang }}</td>
+                                <td>{{ $item->nama_barang }}</td>
+                                <td>{{$item->daftarkategori->nama_kategori}}</td>
+                                <td>{{ $item->satuan_barang }}</td>
+                                <td>{{ $item->stok_barang }}</td>
+                                <td>{{ $item->harga_beli }}</td>
+                                <td>{{ $item->harga_jual }}</td>
+                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6">Tidak ada daftar Supplier</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
     </div>

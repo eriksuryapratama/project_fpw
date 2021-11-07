@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\modelKategori;
 use App\Models\Supplier;
@@ -66,15 +67,52 @@ class AdminController extends Controller
     //fungsi untuk menampilkan halaman barang
     public function barang()
     {
-
-        return view('fitur_admin.barang');
+        $kategori = Kategori::all();
+        $data = [];
+        $data['kategori'] = $kategori;
+        return view('fitur_admin.tambah_barang',$data);
     }
 
     //fungsi untuk tambah barang
-    public function tambah_barang()
+    public function tambah_barang(Request $request)
     {
 
-        return view('fitur_admin.barang');
+        //setting rule
+        $rules = [
+            // 'nama_barang' => 'required',
+
+            'satuan_barang' => 'required',
+            'stok_barang' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required'
+        ];
+
+        //seting custom message
+        $custom_msg = [
+            'required' => ':attribute harus diisi!',
+        ];
+
+        //validasi
+        $this->validate($request, $rules, $custom_msg);
+
+        //buat kode supplier
+        $jum = Barang::select(DB::raw('count(*) as nama_barang'))->first();
+        $kd_barang = "B".str_pad((intval($jum->nama_barang) + 1),4,"0",STR_PAD_LEFT);
+
+        //input ke database
+        $data = $request->all();
+        $data['kode_barang'] = $kd_barang;
+        Barang::create($data);
+
+        return redirect('admin/listbarang');
+    }
+    public function list_barang()
+    {
+        $result = Barang::all();
+       $param = [];
+       $param['result'] = $result;
+
+       return view('fitur_admin.barang', $param);
     }
 
     /////////////////////////////////////////////////////////////////////////
