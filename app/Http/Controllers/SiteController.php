@@ -13,6 +13,26 @@ class SiteController extends Controller
         return view('fitur_website.login');
     }
 
+    //fungsi untuk logout
+    public function logout()
+    {
+        if (Auth::guard('admin_guard')->check()) {
+            Auth::guard('admin_guard')->logout();
+
+
+            return redirect('/login');
+        } else if (Auth::guard('pegawai_guard')->check()) {
+            Auth::guard('pegawai_guard')->logout();
+            
+
+            return redirect('/login');
+        }
+        else {
+            Auth::guard('supplier_guard')->logout();
+            return redirect('/login');
+        }
+    }
+
     //fungsi untuk pengecekkan login
     public function do_login(Request $request)
     {

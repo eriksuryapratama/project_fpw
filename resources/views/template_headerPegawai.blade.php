@@ -1,4 +1,4 @@
-{{-- Ini adalah template header pada saat login admin --}}
+{{-- Ini adalah template header pada saat login pegawai --}}
 <header>
     <nav class="navbar navbar fixed-top navbar-expand-lg navbar-light bg-light">
         {{-- Navbar --}}
@@ -12,37 +12,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Admin</a>
+                    <a class="nav-link" href="#">Pegawai</a>
 
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listadmin">Admin</a>
+                    <a class="nav-link" href="#">Pengecekan Barang</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listpegawai">Pegawai</a>
+                    <a class="nav-link" href="#">Data Barang</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listsupplier">Supplier</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/listkategori">Kategori</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/listbarang">Barang</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/listpembelian">Pembelian</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/laporan">Laporan</a>
+                    <a class="nav-link" href="#">Penjualan</a>
                 </li>
 
                 <li class="nav-item">

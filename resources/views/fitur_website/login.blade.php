@@ -9,7 +9,7 @@
                 <div class="card border-0 shadow rounded-3 my-5" style="background-color:#2b4251">
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5" style="font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:white;">Log In</h5>
-                        <form action="" method="POST">
+                        <form action="/login" method="POST">
                             @csrf
                             <div class="form-floating mb-3">
                                 <label for="" style="color: white">Username</label>

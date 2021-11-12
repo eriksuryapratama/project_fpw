@@ -21,12 +21,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 //LOGIN
-Route::get('/' , [SiteController::class, 'login']);
+
 Route::get('/login' , [SiteController::class, 'login']);
 Route::post('/login' , [SiteController::class, 'do_login']);
 
+Route::get('/logout' , [SiteController::class, 'logout']);
+
 //ADMIN
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/', [BarangController::class, 'list_kategori']);
 
     //kategori
@@ -57,13 +59,13 @@ Route::prefix('admin')->group(function () {
 });
 
 //PEGAWAI
-Route::prefix('pegawai')->group(function () {
+Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/', [PenerimaanController::class, 'form_penerimaan']);
 
 });
 
 //SUPPLIER
-Route::prefix('supplier')->group(function () {
+Route::prefix('supplier')->middleware(['supplierCek'])->group(function () {
     Route::get('/', [PembelianController::class, 'form_pembelian']);
 
 });

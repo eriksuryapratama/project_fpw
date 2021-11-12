@@ -7,6 +7,7 @@ use App\Rules\CekAngka;
 use App\Rules\CekUsernameSupplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SupplierController extends Controller
 {
@@ -53,6 +54,7 @@ class SupplierController extends Controller
         //input ke database
         $data = $request->all();
         $data['kode_supplier'] = $kd_supplier;
+        $data['password'] = Hash::make($data['password']);
         Supplier::create($data);
 
         return redirect('admin/listsupplier');
