@@ -7,7 +7,7 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card border-0 shadow rounded-3 my-5" style="background-color:white">
                 <div class="card-body p-4 p-sm-5">
-                    <h5 class="card-title text-center mb-5 fw-light fs-5" style="font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:black;">Tambah Supplier</h5>
+                    <h5 class="card-title text-center mb-5 fw-light fs-5" style="font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:black;">Tambah Barang</h5>
 
                     <form action="/admin/barang" method="POST">
                         @csrf
@@ -35,17 +35,12 @@
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Stok Barang</label>
-                            <input type="text" name="stok_barang" class="form-control" id="" value="" placeholder="Masukkan stok barang...">
+                            <input type="number" name="stok_barang" class="form-control" id="" value="" placeholder="Masukkan stok barang...">
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="" style="color: black">Harga Beli</label>
-                            <input type="text" name="harga_beli" class="form-control" id="" value="" placeholder="Masukkan harga beli...">
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <label for="" style="color: black">Harga Jual</label>
-                            <input type="text" name="harga_jual" class="form-control" id="" value="" placeholder="Masukkan harga jual...">
+                            <label for="" style="color: black">Harga Barang</label>
+                            <input type="number" name="harga_barang" class="form-control" id="" value="" placeholder="Masukkan harga barang...">
                         </div>
 
                         <div class="form-floating mb-3">

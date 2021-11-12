@@ -35,8 +35,7 @@
                         <th style="">Kategori</th>
                         <th style="">Satuan</th>
                         <th style="">Stok</th>
-                        <th style="">Harga Beli</th>
-                        <th style="">Harga Jual</th>
+                        <th style="">Harga</th>
                         <th style="text-align:center" colspan="2">Aksi</th>
                     </tr>
                 </thead>
@@ -50,15 +49,14 @@
                                 <td>{{$item->daftarkategori->nama_kategori}}</td>
                                 <td>{{ $item->satuan_barang }}</td>
                                 <td>{{ $item->stok_barang }}</td>
-                                <td>{{ $item->harga_beli }}</td>
-                                <td>{{ $item->harga_jual }}</td>
+                                <td>Rp. {{ $item->harga_barang }}</td>
                                 <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
                                 <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="6">Tidak ada daftar Supplier</td>
+                            <td colspan="6">Tidak ada daftar Barang</td>
                         </tr>
                     @endif
                 </tbody>

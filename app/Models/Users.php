@@ -11,16 +11,15 @@ class Users extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = "user";
+    protected $table = "pegawai";
     protected $primaryKey = "id";
     public $incrementing = true;
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
-        'kode_user',
-        'nama_user',
-        'alamat_user',
-        'status_user',
+        'kode_pegawai',
+        'nama_pegawai',
+        'telepon',
         'username',
         'password'
     ];

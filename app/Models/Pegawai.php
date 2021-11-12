@@ -7,21 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class Supplier extends Authenticatable
+class Pegawai extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = "supplier";
+    protected $table = "pegawai";
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = false;
 
     protected $fillable = [
-        'kode_supplier',
-        'nama_supplier',
-        'alamat',
+        'kode_pegawai',
+        'nama_pegawai',
         'telepon',
-        'email',
         'username',
         'password'
     ];

@@ -16,22 +16,74 @@ class SiteController extends Controller
     //fungsi untuk pengecekkan login
     public function do_login(Request $request)
     {
-        //ambil data dari database
-        $credential = [
-            'username' => $request->username,
-            'password' => $request->password
+        // RULES
+        $rules = [
+            'password' => 'required',
+            'username' => 'required'
         ];
 
-        //cek authentikasi
-        if(Auth::guard('pegawai_guard')->attempt($credential)){
-            if(Auth::guard('pegawai_guard')->user()->status_user == 'admin'){
-                return redirect('admin/listkategori');
-            }else{
-                // return redirect('user');
-                dd("kasir");
+        // ERROR MESSAGE
+        $custom_msg = [
+            'required' => ':attribute harus diisi!',
+        ];
+
+        // VALIDASI
+        $this->validate($request, $rules, $custom_msg);
+
+        // CEK STATUS LOGIN DAN AUTHENTIKASI
+        if ($request->role == 'admin') {
+            // AMBIL ISI DB
+            $credential = [
+                "username" => $request->username,
+                "password" => $request->password
+            ];
+
+            //CEK GUARD
+            $result = Auth::guard('admin_guard')->attempt($credential);
+
+            //JIKA DAPAT
+            if ($result) {
+                return redirect('admin/listadmin');
+            } else {
+                return redirect('login')->with('message', 'Gagal Login !');
             }
-        }else{
-            return redirect('login')->with('pesan','Gagal Login !');
+        }
+        elseif ($request->role == 'pegawai') {
+            // AMBIL ISI DB
+            $credential = [
+                "username" => $request->username,
+                "password" => $request->password
+            ];
+
+            // CEK GUARD
+            $result = Auth::guard('pegawai_guard')->attempt($credential);
+
+            //JIKA DAPAT
+            if ($result) {
+                return redirect('pegawai/');
+            } else {
+                return redirect('login')->with('message', 'Gagal Login !');
+            }
+        }
+        elseif ($request->role == 'supplier') {
+            // AMBIL ISI DB
+            $credential = [
+                "username" => $request->username,
+                "password" => $request->password
+            ];
+
+            // CEK GUARD
+            $result = Auth::guard('supplier_guard')->attempt($credential);
+
+            //JIKA DAPAT
+            if ($result) {
+                return redirect('supplier/');
+            } else {
+                return redirect('login')->with('message', 'Gagal Login !');
+            }
+        }
+        else{
+            return redirect('login')->with('message', 'Gagal Login !');
         }
     }
 

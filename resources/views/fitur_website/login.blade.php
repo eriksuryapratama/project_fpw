@@ -21,6 +21,16 @@
                                 <input type="password" name="password" class="form-control" id="" placeholder="Enter your password...">
                             </div>
 
+                            <div class="form-floating mb-3">
+                                <label for="" style="color: white">Role</label>
+                                <select name="role" class="form-control">
+                                    <option value="" disabled selected>-- Pilih Role --</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="pegawai">Pegawai</option>
+                                    <option value="supplier">Supplier</option>
+                                </select>
+                            </div>
+
                             <div class="d-grid">
                                 <input type="submit" name="btn_login" class="btn btn-primary btn-login text-uppercase fw-bold" value="Login">
                             </div>

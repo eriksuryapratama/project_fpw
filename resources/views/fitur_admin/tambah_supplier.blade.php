@@ -20,12 +20,32 @@
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Alamat Supplier</label>
-                            <input type="text" name="alamat_supplier" class="form-control" id="" value="" placeholder="Masukkan alamat supplier...">
+                            <input type="text" name="alamat" class="form-control" id="" value="" placeholder="Masukkan alamat supplier...">
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="" style="color: black">Kota Supplier</label>
-                            <input type="text" name="kota_supplier" class="form-control" id="" value="" placeholder="Masukkan kota supplier...">
+                            <label for="" style="color: black">Telepon Supplier</label>
+                            <input type="text" name="telepon" class="form-control" id="" value="" placeholder="Masukkan telepon supplier...">
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="" style="color: black">Email Supplier</label>
+                            <input type="text" name="email" class="form-control" id="" value="" placeholder="Masukkan email supplier...">
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="" style="color: black">Username</label>
+                            <input type="text" name="username" class="form-control" id="" value="" placeholder="Masukkan username...">
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="" style="color: black">Password</label>
+                            <input type="password" name="password" class="form-control" id="" value="" placeholder="Masukkan password...">
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="" style="color: black">Confirm Password</label>
+                            <input type="password" name="password_confirmation" class="form-control" id="" value="" placeholder="Konfirmasi Password...">
                         </div>
 
                         <div class="form-floating mb-3">

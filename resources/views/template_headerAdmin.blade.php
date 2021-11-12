@@ -18,23 +18,33 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listkategori">Kategori</a>
+                    <a class="nav-link" href="/admin/listadmin">Admin</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listbarang">Barang</a>
+                    <a class="nav-link" href="/admin/listpegawai">Pegawai</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/listsupplier">Supplier</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listuser">Pegawai</a>
+                    <a class="nav-link" href="/admin/listkategori">Kategori</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/listbarang">Barang</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/listpembelian">Pembelian</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/laporan">Laporan</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Log Out</a>
                 </li>

@@ -20,7 +20,7 @@
                         <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Pegawai</h4>
                     </div>
                     <div class="col-2">
-                        <a href="/admin/user"><button type="button" class="btn btn-success">Tambah Pegawai</button></a>
+                        <a href="/admin/pegawai"><button type="button" class="btn btn-success">Tambah Pegawai</button></a>
                     </div>
                 </div>
             </div>
@@ -32,8 +32,7 @@
                     <tr>
                         <th style="text-align:center;">Kode</th>
                         <th style="text-align:center;">Nama</th>
-                        <th style="text-align:center;">Alamat</th>
-                        <th style="text-align:center;">Status</th>
+                        <th style="text-align:center;">Telepon</th>
                         <th style="text-align:center;">Username</th>
                         <th style="text-align:center;" colspan="2">Aksi</th>
                     </tr>
@@ -43,10 +42,9 @@
                     @if (null != $result)
                         @foreach ($result as $item)
                             <tr>
-                                <td>{{ $item->kode_user }}</td>
-                                <td>{{ $item->nama_user }}</td>
-                                <td>{{ $item->alamat_user }}</td>
-                                <td>{{ $item->status_user }}</td>
+                                <td>{{ $item->kode_pegawai }}</td>
+                                <td>{{ $item->nama_pegawai }}</td>
+                                <td>{{ $item->telepon }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
                                 <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
@@ -54,7 +52,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="6">Tidak ada daftar User</td>
+                            <td colspan="6">Tidak ada daftar Pegawai</td>
                         </tr>
                     @endif
                 </tbody>

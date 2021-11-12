@@ -30,10 +30,12 @@
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Kode</th>
+                        <th style="">Kode</th>
                         <th style="">Nama</th>
                         <th style="">Alamat</th>
-                        <th style="">Kota</th>
+                        <th style="">Telepon</th>
+                        <th style="">Email</th>
+                        <th style="">Username</th>
                         <th style="text-align:center" colspan="2">Aksi</th>
                     </tr>
                 </thead>
@@ -44,8 +46,10 @@
                             <tr>
                                 <td>{{ $item->kode_supplier }}</td>
                                 <td>{{ $item->nama_supplier }}</td>
-                                <td>{{ $item->alamat_supplier }}</td>
-                                <td>{{ $item->kota_supplier }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->telepon }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->username }}</td>
                                 <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
                                 <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                             </tr>

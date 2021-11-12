@@ -12,7 +12,7 @@ class Barang extends Model
     protected $table = "barang";
     protected $primaryKey = "id";
     public $incrementing = true;
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'kode_barang',
@@ -20,9 +20,10 @@ class Barang extends Model
         'kode_kategori',
         'satuan_barang',
         'stok_barang',
-        'harga_beli',
-        'harga_jual'
+        'harga_barang'
     ];
+
+    // RELATIONSHIP
     public function daftarkategori()
     {
         return $this->belongsTo(Kategori::class,'kode_kategori','kode_kategori');

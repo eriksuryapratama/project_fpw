@@ -2,48 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\Barang;
 use App\Models\Kategori;
-use App\Models\modelKategori;
-use App\Models\Supplier;
-use App\Models\Users;
-use App\Rules\CekAngka;
-use App\Rules\CekUsername;
-use App\Rules\CekUsernameAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class BarangController extends Controller
 {
+
     /////////////////////////////////////////////////////////////////////////
     ///----------------------------KATEGORI-------------------------------///
     /////////////////////////////////////////////////////////////////////////
 
-    ///fungsi untuk menampilkan form tambah kategori
-    public function kategori()
+    // FUNGSI FORM KATEGORI
+    public function form_kategori()
     {
         return view('fitur_admin.tambah_kategori');
     }
 
-    //fungsi untuk tambah kategori
+    // FUNGSI TAMBAH KATEGORI
     public function tambah_kategori(Request $request)
     {
-        //setting rule
+        // RULES
         $rules = [
             'nama_kategori' => 'required'
         ];
 
-        //seting custom message
+        // ERROR MESSAGE
         $custom_msg = [
             'required' => ':attribute harus diisi!',
         ];
 
-        //validasi
+        // VALIDASI
         $this->validate($request, $rules, $custom_msg);
 
-        //buat kode user
+        // KODE KATEGORI
         $jum = Kategori::select(DB::raw('count(*) as nama_kategori'))->first();
         $kd_kategori = "K".str_pad((intval($jum->nama_kategori) + 1),4,"0",STR_PAD_LEFT);
 
@@ -68,12 +61,13 @@ class AdminController extends Controller
     ///------------------------------BARANG-------------------------------///
     /////////////////////////////////////////////////////////////////////////
 
-    //fungsi untuk menampilkan halaman barang
-    public function barang()
+    // FUNGSI FORM BARANG
+    public function form_barang()
     {
         $kategori = Kategori::all();
         $data = [];
         $data['kategori'] = $kategori;
+
         return view('fitur_admin.tambah_barang',$data);
     }
 
@@ -83,12 +77,10 @@ class AdminController extends Controller
 
         //setting rule
         $rules = [
-            // 'nama_barang' => 'required',
-
+            'nama_barang' => 'required',
             'satuan_barang' => 'required',
             'stok_barang' => 'required',
-            'harga_beli' => 'required',
-            'harga_jual' => 'required'
+            'harga_barang' => 'required'
         ];
 
         //seting custom message
@@ -113,65 +105,9 @@ class AdminController extends Controller
     public function list_barang()
     {
         $result = Barang::all();
-       $param = [];
-       $param['result'] = $result;
-
-       return view('fitur_admin.barang', $param);
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    ///------------------------------ ADMIN ------------------------------///
-    /////////////////////////////////////////////////////////////////////////
-
-    //fungsi untuk menampilkan form tambah user
-    public function form_admin()
-    {
-        return view('fitur_admin.tambah_admin');
-    }
-
-    //fungsi untuk tambah user
-    public function tambah_admin(Request $request)
-    {
-        //setting rule
-        $rules = [
-            'nama_admin' => 'required',
-            'telepon' => ['required', 'min:10', new CekAngka()],
-            'username' => ['required', 'regex:/^\S*$/u', new CekUsernameAdmin()],
-            'password' => 'required | confirmed',
-            'password_confirmation' => 'required'
-        ];
-
-        //seting custom message
-        $custom_msg = [
-            'required' => ':attribute harus diisi!',
-            'min' => ':attribute minimal 10 angka',
-            'confirmed' => 'password dan confirm password harus sama !',
-            'regex' => ':attribute tidak boleh menggunakan spasi !'
-        ];
-
-        //validasi
-        $this->validate($request, $rules, $custom_msg);
-
-        //buat kode user
-        $jum = Admin::select(DB::raw('count(*) as nama_admin'))->first();
-        $kd_admin = "A".str_pad((intval($jum->nama_admin) + 1),4,"0",STR_PAD_LEFT);
-
-        //input ke database
-        $data = $request->all();
-        $data['kode_admin'] = $kd_admin;
-        $data['password'] = Hash::make($data['password']);
-        Admin::create($data);
-
-        return redirect('admin/listadmin');
-    }
-
-     // FUNGSI LIST ADMIN
-     public function list_admin()
-     {
-        $result = Admin::all();
         $param = [];
         $param['result'] = $result;
 
-        return view('fitur_admin.admin', $param);
-     }
+       return view('fitur_admin.barang', $param);
+    }
 }
