@@ -42,8 +42,8 @@
                             <tr>
                                 <td>{{ $item->kode_kategori }}</td>
                                 <td>{{ $item->nama_kategori }}</td>
-                                <td style="text-align:center"><a href="/admin/kategori"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                                <td style="text-align:center"><a href="/admin/listkategori"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/kategori/update/$item->id") }}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/kategori/delete/$item->id") }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
                         @endforeach
                     @else

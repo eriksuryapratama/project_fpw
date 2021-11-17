@@ -50,8 +50,8 @@
                                 <td>{{ $item->satuan_barang }}</td>
                                 <td>{{ $item->stok_barang }}</td>
                                 <td>Rp. {{ $item->harga_barang }}</td>
-                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/barang/update/$item->id") }}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                <td style="text-align:center"><a href={{ url("/admin/barang/delete/$item->id") }}><button type="button" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
                         @endforeach
                     @else

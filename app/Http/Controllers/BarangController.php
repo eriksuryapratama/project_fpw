@@ -57,6 +57,42 @@ class BarangController extends Controller
         return view('fitur_admin.kategori', $param);
     }
 
+    public function deletekategori(Request $req)
+    {
+
+        Kategori::find($req->id)->delete();
+        return redirect('admin/listkategori');
+    }
+    public function updateindex_kategori(Request $req)
+    {
+
+
+        $kategori = Kategori::find($req->id);
+        $data['result'] = $kategori;
+        return view('fitur_admin.edit_kategori', $data);
+    }
+    public function updatekategori(Request $req)
+    {
+        $rules = [
+            'nama_kategori' => 'required'
+        ];
+
+        // ERROR MESSAGE
+        $custom_msg = [
+            'required' => ':attribute harus diisi !'
+        ];
+
+        // VALIDATE
+        $this->validate($req, $rules, $custom_msg);
+
+        // UPDATE DATA Kategori
+        $result = Kategori::find($req->id)->update([
+            "nama_kategori"=>$req->nama_kategori
+        ]);
+
+        return redirect('/admin/listkategori');
+    }
+
     /////////////////////////////////////////////////////////////////////////
     ///------------------------------BARANG-------------------------------///
     /////////////////////////////////////////////////////////////////////////
@@ -109,5 +145,47 @@ class BarangController extends Controller
         $param['result'] = $result;
 
        return view('fitur_admin.barang', $param);
+    }
+    public function deletebarang(Request $req)
+    {
+
+        Barang::find($req->id)->delete();
+        return redirect('admin/listbarang');
+    }
+    public function updateindex_barang(Request $req)
+    {
+
+
+        $barang = Barang::find($req->id);
+        $data['result'] = $barang;
+        return view('fitur_admin.edit_barang', $data);
+    }
+    public function updatebarang(Request $req)
+    {
+        $rules = [
+            'nama_barang' => 'required',
+            'satuan_barang' => 'required',
+            'stok_barang' => 'required',
+            'harga_barang' => 'required'
+        ];
+
+        // ERROR MESSAGE
+        $custom_msg = [
+            'required' => ':attribute harus diisi !'
+        ];
+
+        // VALIDATE
+        $this->validate($req, $rules, $custom_msg);
+
+        // UPDATE DATA Barang
+        $result = Barang::find($req->id)->update([
+            "nama_barang"=>$req->nama_barang,
+            "satuan_barang"=>$req->satuan_barang,
+            "stok_barang"=>$req->stok_barang,
+            "satuan_barang"=>$req->satuan_barang,
+            "harga_barang"=>$req->harga_barang
+        ]);
+
+        return redirect('/admin/listbarang');
     }
 }

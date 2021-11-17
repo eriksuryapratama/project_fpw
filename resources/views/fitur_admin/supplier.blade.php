@@ -50,8 +50,8 @@
                                 <td>{{ $item->telepon }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->username }}</td>
-                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/supplier/update/$item->id") }}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/supplier/delete/$item->id") }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
                         @endforeach
                     @else

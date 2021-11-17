@@ -72,4 +72,44 @@ class AdminController extends Controller
 
         return view('fitur_admin.admin', $param);
      }
+
+     //Delete Admin
+     public function deleteadmin(Request $req)
+    {
+
+        Admin::find($req->id)->delete();
+        return redirect('admin/listadmin');
+    }
+    public function updateindex_admin(Request $req)
+    {
+
+
+        $admin = Admin::find($req->id);
+        $data['result'] = $admin;
+        return view('fitur_admin.edit_admin', $data);
+    }
+    public function updateadmin(Request $req)
+    {
+        $rules = [
+            'nama_admin' => 'required',
+            'telepon' => ['required', 'min:10', new CekAngka()],
+
+        ];
+
+        // ERROR MESSAGE
+        $custom_msg = [
+            'required' => ':attribute harus diisi !'
+        ];
+
+        // VALIDATE
+        $this->validate($req, $rules, $custom_msg);
+
+        // UPDATE DATA Kategori
+        $result = Admin::find($req->id)->update([
+            "nama_admin"=>$req->nama_admin,
+            "telepon"=>$req->telepon,
+        ]);
+
+        return redirect('/admin/listadmin');
+    }
 }

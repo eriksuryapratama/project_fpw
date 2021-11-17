@@ -66,4 +66,40 @@ class PegawaiController extends Controller
 
         return view('fitur_admin.pegawai', $param);
      }
+
+     public function deletepegawai(Request $req)
+    {
+
+        Pegawai::find($req->id)->delete();
+        return redirect('admin/listpegawai');
+    }
+    public function updateindex_pegawai(Request $req)
+    {
+        $pegawai = Pegawai::find($req->id);
+        $data['result'] = $pegawai;
+        return view('fitur_admin.edit_pegawai', $data);
+    }
+    public function updatepegawai(Request $req)
+    {
+        $rules = [
+            'nama_pegawai' => 'required',
+            'telepon' => ['required', 'min:10', new CekAngka()],
+        ];
+
+        // ERROR MESSAGE
+        $custom_msg = [
+            'required' => ':attribute harus diisi !'
+        ];
+
+        // VALIDATE
+        $this->validate($req, $rules, $custom_msg);
+
+        // UPDATE DATA Pegawai
+        $result = Pegawai::find($req->id)->update([
+            "nama_pegawai"=>$req->nama_pegawai,
+            "telepon"=>$req->telepon
+        ]);
+
+        return redirect('/admin/listpegawai');
+    }
 }

@@ -51,8 +51,8 @@
                             <td>{{ $item->kode_admin }}</td>
                             <td>{{ $item->nama_admin }}</td>
                             <td>{{ $item->telepon }}</td>
-                            <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                            <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                            <td style="text-align:center"><a href="{{ url("/admin/admin/update/$item->id") }}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                            <td style="text-align:center"><a href="{{ url("/admin/admin/delete/$item->id") }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                         </tr>
                     @endforeach
                 @else

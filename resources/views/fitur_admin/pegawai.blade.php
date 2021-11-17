@@ -46,8 +46,8 @@
                                 <td>{{ $item->nama_pegawai }}</td>
                                 <td>{{ $item->telepon }}</td>
                                 <td>{{ $item->username }}</td>
-                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                                <td style="text-align:center"><a href="#"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/pegawai/update/$item->id") }}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                                <td style="text-align:center"><a href="{{ url("/admin/pegawai/delete/$item->id") }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
                         @endforeach
                     @else

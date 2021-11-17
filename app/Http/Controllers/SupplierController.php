@@ -69,4 +69,49 @@ class SupplierController extends Controller
 
        return view('fitur_admin.supplier', $param);
     }
+
+    public function deletesupplier(Request $req)
+    {
+        Supplier::find($req->id)->delete();
+        return redirect('admin/listsupplier');
+    }
+    public function updateindex_supplier(Request $req)
+    {
+
+
+        $supplier = Supplier::find($req->id);
+        $data['result'] = $supplier;
+        return view('fitur_admin.edit_supplier', $data);
+    }
+    public function updatesupplier(Request $req)
+    {
+        $rules = [
+            'nama_supplier' => 'required',
+            'alamat' => 'required',
+            'telepon' => ['required', 'min:10', new CekAngka()],
+            'email' => 'required | email',
+            'username' => ['required', 'regex:/^\S*$/u', new CekUsernameSupplier()]
+        ];
+
+        // ERROR MESSAGE
+        $custom_msg = [
+            'required' => ':attribute harus diisi !',
+            'min' => ':attribute minimal 10 angka',
+            'regex' => ':attribute tidak boleh menggunakan spasi !'
+        ];
+
+        // VALIDATE
+        $this->validate($req, $rules, $custom_msg);
+
+        // UPDATE DATA Kategori
+        $result = Supplier::find($req->id)->update([
+            "nama_supplier"=>$req->nama_supplier,
+            "alamat"=>$req->alamat,
+            "telepon"=>$req->telepon,
+            "email"=>$req->email,
+            "username"=>$req->username
+        ]);
+
+        return redirect('/admin/listsupplier');
+    }
 }
