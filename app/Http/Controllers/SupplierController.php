@@ -18,7 +18,7 @@ class SupplierController extends Controller
     // FUNGSI FORM SUPPLIER
     public function form_supplier()
     {
-        return view('fitur_admin.tambah_supplier');
+        return view('fitur_admin.form_tambah.tambah_supplier');
     }
 
     // FUNGSI TAMBAH SUPPLIER
@@ -67,7 +67,7 @@ class SupplierController extends Controller
        $param = [];
        $param['result'] = $result;
 
-       return view('fitur_admin.supplier', $param);
+       return view('fitur_admin.list_admin.list_supplier', $param);
     }
 
     public function deletesupplier(Request $req)
@@ -75,14 +75,14 @@ class SupplierController extends Controller
         Supplier::find($req->id)->delete();
         return redirect('admin/listsupplier');
     }
+
     public function updateindex_supplier(Request $req)
     {
-
-
         $supplier = Supplier::find($req->id);
         $data['result'] = $supplier;
-        return view('fitur_admin.edit_supplier', $data);
+        return view('fitur_admin.form_edit.edit_supplier', $data);
     }
+
     public function updatesupplier(Request $req)
     {
         $rules = [

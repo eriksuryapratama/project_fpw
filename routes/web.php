@@ -50,13 +50,9 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::post('/barang/update', [BarangController::class, 'updatebarang']);
 
     // PEMESANAN
-
     Route::get('/pemesanan/tambah/{id}', [PemesananController::class, 'index_pemesanan']);
-
     Route::get('/tambahpemesanan', [PemesananController::class, 'form_pemesanan']);
     Route::post('/tambahpemesanan', [PemesananController::class, 'tambah_pemesanan']);
-
-
     Route::get('/pemesanan', [PemesananController::class, 'list_barang']);
     Route::get('/listpemesanan', [PemesananController::class, 'list_pemesanan']);
 

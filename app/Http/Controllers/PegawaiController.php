@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Hash;
 class PegawaiController extends Controller
 {
     /////////////////////////////////////////////////////////////////////////
-    ///-------------------------------USER--------------------------------///
+    ///------------------------------PEGAWAI------------------------------///
     /////////////////////////////////////////////////////////////////////////
 
-    // FUNGSI FORM USER
+    // FUNGSI FORM PEGAWAI
     public function form_pegawai()
     {
-        return view('fitur_admin.tambah_pegawai');
+        return view('fitur_admin.form_tambah.tambah_pegawai');
     }
 
     // FUNGSI TAMBAH PEGAWAI
@@ -64,21 +64,25 @@ class PegawaiController extends Controller
         $param = [];
         $param['result'] = $result;
 
-        return view('fitur_admin.pegawai', $param);
+        return view('fitur_admin.list_admin.list_pegawai', $param);
      }
 
-     public function deletepegawai(Request $req)
+    // DELETE PEGAWAI
+    public function deletepegawai(Request $req)
     {
 
         Pegawai::find($req->id)->delete();
         return redirect('admin/listpegawai');
     }
+
     public function updateindex_pegawai(Request $req)
     {
         $pegawai = Pegawai::find($req->id);
         $data['result'] = $pegawai;
-        return view('fitur_admin.edit_pegawai', $data);
+        return view('fitur_admin.form_edit.edit_pegawai', $data);
     }
+
+    // EDIT PEGAWAI
     public function updatepegawai(Request $req)
     {
         $rules = [

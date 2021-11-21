@@ -30,12 +30,13 @@
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Jumlah Barang</label>
-                            <input type="number" name="jumlah" class="form-control" id="" value="">
+                            <input type="number" name="jumlah" class="form-control" id="" value="" placeholder="Masukkan jumlah pemesanan...">
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="" class="form-label">Supplier</label>
                             <select class="form-control" name= "kode_supplier" id="" aria-label="Default select example">
+                                <option value="" disabled selected>-- Pilih Supplier --</option>
                                 @foreach ($supplier as $item)
                                     <option value="{{ $item->kode_supplier }}">{{ $item->nama_supplier }}</option>
                                 @endforeach

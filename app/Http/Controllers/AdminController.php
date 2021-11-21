@@ -24,7 +24,7 @@ class AdminController extends Controller
     //fungsi untuk menampilkan form tambah user
     public function form_admin()
     {
-        return view('fitur_admin.tambah_admin');
+        return view('fitur_admin.form_tambah.tambah_admin');
     }
 
     //fungsi untuk tambah user
@@ -64,30 +64,32 @@ class AdminController extends Controller
     }
 
      // FUNGSI LIST ADMIN
-     public function list_admin()
-     {
+    public function list_admin()
+    {
         $result = Admin::all();
         $param = [];
         $param['result'] = $result;
 
-        return view('fitur_admin.admin', $param);
-     }
+        return view('fitur_admin.list_admin.list_admin', $param);
+    }
 
-     //Delete Admin
-     public function deleteadmin(Request $req)
+     // DELETE ADMIN
+    public function deleteadmin(Request $req)
     {
 
         Admin::find($req->id)->delete();
         return redirect('admin/listadmin');
     }
+
+    // AMBIL INDEX ADMIN
     public function updateindex_admin(Request $req)
     {
-
-
         $admin = Admin::find($req->id);
         $data['result'] = $admin;
-        return view('fitur_admin.edit_admin', $data);
+        return view('fitur_admin.form_edit.edit_admin', $data);
     }
+
+    // EDIT ADMIN
     public function updateadmin(Request $req)
     {
         $rules = [

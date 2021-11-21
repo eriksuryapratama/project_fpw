@@ -17,7 +17,7 @@ class PemesananController extends Controller
         $data = [];
         $data['supplier'] = $supplier;
 
-        return view('fitur_admin.form_admin.form_pemesanan', $data);
+        return view('fitur_admin.form_tambah.form_pemesanan', $data);
     }
 
     // FUNGSI TAMBAH PEMESANAN
@@ -25,7 +25,8 @@ class PemesananController extends Controller
     {
          //setting rule
          $rules = [
-            'jumlah' => 'required'
+            'jumlah' => 'required',
+            'kode_supplier' => 'required'
         ];
 
         //seting custom message
@@ -58,7 +59,7 @@ class PemesananController extends Controller
         $data2 = [];
         $data2['supplier'] = $supplier;
 
-        return view('fitur_admin.form_admin.form_pemesanan', $data, $data2);
+        return view('fitur_admin.form_tambah.form_pemesanan', $data, $data2);
     }
 
     // LIST BARANG

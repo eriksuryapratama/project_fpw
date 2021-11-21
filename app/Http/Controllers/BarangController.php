@@ -17,7 +17,7 @@ class BarangController extends Controller
     // FUNGSI FORM KATEGORI
     public function form_kategori()
     {
-        return view('fitur_admin.tambah_kategori');
+        return view('fitur_admin.form_tambah.tambah_kategori');
     }
 
     // FUNGSI TAMBAH KATEGORI
@@ -54,7 +54,7 @@ class BarangController extends Controller
         $result = Kategori::all();
         $param = [];
         $param['result'] = $result;
-        return view('fitur_admin.kategori', $param);
+        return view('fitur_admin.list_admin.list_kategori', $param);
     }
 
     public function deletekategori(Request $req)
@@ -65,12 +65,11 @@ class BarangController extends Controller
     }
     public function updateindex_kategori(Request $req)
     {
-
-
         $kategori = Kategori::find($req->id);
         $data['result'] = $kategori;
-        return view('fitur_admin.edit_kategori', $data);
+        return view('fitur_admin.form_edit.edit_kategori', $data);
     }
+
     public function updatekategori(Request $req)
     {
         $rules = [
@@ -104,13 +103,12 @@ class BarangController extends Controller
         $data = [];
         $data['kategori'] = $kategori;
 
-        return view('fitur_admin.tambah_barang',$data);
+        return view('fitur_admin.form_tambah.tambah_barang',$data);
     }
 
     //fungsi untuk tambah barang
     public function tambah_barang(Request $request)
     {
-
         //setting rule
         $rules = [
             'nama_barang' => 'required',
@@ -144,21 +142,20 @@ class BarangController extends Controller
         $param = [];
         $param['result'] = $result;
 
-       return view('fitur_admin.barang', $param);
+       return view('fitur_admin.list_admin.list_barang', $param);
     }
+
     public function deletebarang(Request $req)
     {
-
         Barang::find($req->id)->delete();
         return redirect('admin/listbarang');
     }
+
     public function updateindex_barang(Request $req)
     {
-
-
         $barang = Barang::find($req->id);
         $data['result'] = $barang;
-        return view('fitur_admin.edit_barang', $data);
+        return view('fitur_admin.form_edit.edit_barang', $data);
     }
     public function updatebarang(Request $req)
     {
