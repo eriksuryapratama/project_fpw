@@ -15,22 +15,22 @@
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Nama Barang</label>
-                            <input type="text" name="nama_barang" class="form-control" id="" value="" placeholder="Masukkan nama barang...">
+                            <input type="text" name="nama_barang" class="form-control" id="" value="{{$result->nama_barang}}" placeholder="Masukkan nama barang...">
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Satuan Barang</label>
-                            <input type="text" name="satuan_barang" class="form-control" id="" value="" placeholder="Masukkan satuan barang...">
+                            <input type="text" name="satuan_barang" class="form-control" id="" value="{{$result->satuan_barang}}" placeholder="Masukkan satuan barang...">
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Stok Barang</label>
-                            <input type="number" name="stok_barang" class="form-control" id="" value="" placeholder="Masukkan stok barang...">
+                            <input type="number" name="stok_barang" class="form-control" id="" value="{{$result->stok_barang}}" placeholder="Masukkan stok barang...">
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Harga Barang</label>
-                            <input type="number" name="harga_barang" class="form-control" id="" value="" placeholder="Masukkan harga barang...">
+                            <input type="number" name="harga_barang" class="form-control" id="" value="{{$result->harga_barang}}" placeholder="Masukkan harga barang...">
                         </div>
 
                         <div class="form-floating mb-3">

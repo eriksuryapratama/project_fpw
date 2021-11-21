@@ -15,12 +15,12 @@
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Nama Admin</label>
-                            <input type="text" name="nama_admin" class="form-control" id="" value="" placeholder="Masukkan nama admin...">
+                            <input type="text" name="nama_admin" class="form-control" id="" value="{{$result->nama_admin}}" placeholder="Masukkan nama admin...">
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Telepon admin</label>
-                            <input type="text" name="telepon" class="form-control" id="" value="" placeholder="Masukkan telepon admin...">
+                            <input type="text" name="telepon" class="form-control" id="" value="{{$result->telepon}}" placeholder="Masukkan telepon admin...">
                         </div>
 
                         <div class="form-floating mb-3">
