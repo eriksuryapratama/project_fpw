@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SupplierController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //LOGIN
+Route::get('/' , [SiteController::class, 'login']);
 
 Route::get('/login' , [SiteController::class, 'login']);
 Route::post('/login' , [SiteController::class, 'do_login']);
@@ -47,6 +49,16 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/barang/update/{id}', [BarangController::class, 'updateindex_barang']);
     Route::post('/barang/update', [BarangController::class, 'updatebarang']);
 
+    // PEMESANAN
+
+    Route::get('/pemesanan/tambah/{id}', [PemesananController::class, 'index_pemesanan']);
+
+    Route::get('/tambahpemesanan', [PemesananController::class, 'form_pemesanan']);
+    Route::post('/tambahpemesanan', [PemesananController::class, 'tambah_pemesanan']);
+
+
+    Route::get('/pemesanan', [PemesananController::class, 'list_barang']);
+    Route::get('/listpemesanan', [PemesananController::class, 'list_pemesanan']);
 
     //supplier
     Route::get('/supplier', [SupplierController::class, 'form_supplier']);
@@ -82,6 +94,6 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
 
 //SUPPLIER
 Route::prefix('supplier')->middleware(['supplierCek'])->group(function () {
-    Route::get('/', [PembelianController::class, 'form_pembelian']);
+    // Route::get('/', [PembelianController::class, 'form_pembelian']);
 
 });

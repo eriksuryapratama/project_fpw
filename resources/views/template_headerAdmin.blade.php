@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Admin</a>
+                    <a class="nav-link" href="#">{{ Auth::guard('admin_guard')->user()->nama_admin }}</a>
 
                 </li>
             </ul>
@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/listpembelian">Pembelian</a>
+                    <a class="nav-link" href="/admin/listpemesanan">Pemesanan</a>
                 </li>
 
                 <li class="nav-item">
