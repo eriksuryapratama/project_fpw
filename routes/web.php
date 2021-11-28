@@ -64,6 +64,7 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/supplier/update/{id}', [SupplierController::class, 'updateindex_supplier']);
     Route::post('/supplier/update', [SupplierController::class, 'updatesupplier']);
 
+
     //pegawai
     Route::get('/pegawai', [PegawaiController::class, 'form_pegawai']);
     Route::post('/pegawai', [PegawaiController::class, 'tambah_pegawai']);
@@ -91,5 +92,7 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
 //SUPPLIER
 Route::prefix('supplier')->middleware(['supplierCek'])->group(function () {
     // Route::get('/', [PembelianController::class, 'form_pembelian']);
-
+    Route::get('/', [PemesananController::class, 'list_pemesanan_supplier']);
+    Route::get('/supplier/send/{id}', [PemesananController::class, 'sendindex_supplier']);
+    Route::post('/supplier/send', [PemesananController::class, 'send_supplier']);
 });

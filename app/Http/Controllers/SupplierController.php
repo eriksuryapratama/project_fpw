@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use App\Models\Supplier;
 use App\Rules\CekAngka;
 use App\Rules\CekUsernameSupplier;
@@ -114,4 +115,6 @@ class SupplierController extends Controller
 
         return redirect('/admin/listsupplier');
     }
+
+
 }

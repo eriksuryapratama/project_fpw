@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Pemesanan;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PemesananController extends Controller
@@ -80,5 +81,33 @@ class PemesananController extends Controller
         $param['result'] = $result;
 
         return view('fitur_admin.list_admin.list_pemesanan', $param);
+    }
+
+
+    // LIST PEMESANAN SUPPLIER
+    public function list_pemesanan_supplier()
+    {
+        $result = Pemesanan::all()->where('cek_kirim',0)
+                                ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier);
+        $param = [];
+        $param['result'] = $result;
+
+        return view('fitur_supplier.listpemesanan', $param);
+    }
+
+    public function sendindex_supplier(Request $req)
+    {
+        $pemesanan = Pemesanan::find($req->id);
+        $data['result'] = $pemesanan;
+        return view('fitur_supplier.konfirmasi_pemesanan', $data);
+    }
+
+    public function send_supplier(Request $req)
+    {
+        $result = Pemesanan::find($req->id)->update([
+            "cek_kirim" => 1,
+        ]);
+
+        return redirect('/supplier');
     }
 }

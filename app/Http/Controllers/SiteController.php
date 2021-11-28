@@ -23,7 +23,7 @@ class SiteController extends Controller
             return redirect('/login');
         } else if (Auth::guard('pegawai_guard')->check()) {
             Auth::guard('pegawai_guard')->logout();
-            
+
 
             return redirect('/login');
         }

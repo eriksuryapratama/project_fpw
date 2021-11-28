@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Supplier</a>
+                    <a class="nav-link" href="#">{{ Auth::guard('supplier_guard')->user()->nama_supplier }}</a>
 
                 </li>
             </ul>
