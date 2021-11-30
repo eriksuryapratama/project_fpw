@@ -144,6 +144,14 @@ class BarangController extends Controller
 
        return view('fitur_admin.list_admin.list_barang', $param);
     }
+    public function list_barangpegawai()
+    {
+        $result = Barang::all();
+        $param = [];
+        $param['result'] = $result;
+
+       return view('fitur_pegawai.listbarangpegawai', $param);
+    }
 
     public function deletebarang(Request $req)
     {

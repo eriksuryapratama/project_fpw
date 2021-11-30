@@ -18,11 +18,11 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pengecekan Barang</a>
+                    <a class="nav-link" href="/pegawai/">Pengecekan Barang</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Data Barang</a>
+                    <a class="nav-link" href="/pegawai/listbarang">Data Barang</a>
                 </li>
 
                 <li class="nav-item">

@@ -76,7 +76,7 @@ class PemesananController extends Controller
     // LIST PEMESANAN
     public function list_pemesanan()
     {
-        $result = Pemesanan::all();
+        $result = Pemesanan::all()->where('cek_kirim',0)->where('cek_terima',0);
         $param = [];
         $param['result'] = $result;
 

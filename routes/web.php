@@ -85,8 +85,10 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
 
 //PEGAWAI
 Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
-    Route::get('/', [PenerimaanController::class, 'form_penerimaan']);
-
+    Route::get('/', [PenerimaanController::class, 'list_pengiriman_pegawai']);
+    Route::get('/send/{id}', [PenerimaanController::class, 'acceptindex_pegawai']);
+    Route::post('/send', [PenerimaanController::class, 'accept_pegawai']);
+    Route::get('/listbarang', [BarangController::class, 'list_barangpegawai']);
 });
 
 //SUPPLIER

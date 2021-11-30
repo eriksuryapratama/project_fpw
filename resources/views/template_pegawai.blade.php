@@ -13,7 +13,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Langar&family=Russo+One&display=swap" rel="stylesheet">
-    <title>Admin</title>
+    <title>Pegawai</title>
 </head>
 <body style="background-color:#5b7d87">
 
