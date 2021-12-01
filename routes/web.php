@@ -6,6 +6,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PenerimaanController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -97,6 +98,10 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/listretur', [PenerimaanController::class, 'list_retur']);
     Route::get('/retur/{id}', [PenerimaanController::class, 'index_retur']);
     Route::post('/retur', [PenerimaanController::class, 'tambah_retur']);
+
+    // PENJUALAN
+    Route::get('/listpenjualan', [PenjualanController::class, 'list_penjualan']);
+
 
 });
 

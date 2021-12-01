@@ -129,10 +129,27 @@ class BarangController extends Controller
         $jum = Barang::select(DB::raw('count(*) as nama_barang'))->first();
         $kd_barang = "B".str_pad((intval($jum->nama_barang) + 1),4,"0",STR_PAD_LEFT);
 
+        //nama file
+        $imageName = time().'.'.$request->gambar->extension();
+        $request->gambar->move(public_path('img_barang'), $imageName);
+
         //input ke database
-        $data = $request->all();
-        $data['kode_barang'] = $kd_barang;
-        Barang::create($data);
+        //$data = $request->all();
+        // $data['kode_barang'] = $kd_barang;
+        // $data['nama_barang'] =
+        // $data['gambar'] = $imageName;
+        // Barang::create($data);
+
+        //input ke database
+        Barang::create([
+            'kode_barang' => $kd_barang,
+            'nama_barang' => $request->nama_barang,
+            'kode_kategori' => $request->kode_kategori,
+            'satuan_barang' => $request->satuan_barang,
+            'stok_barang' => $request->stok_barang,
+            'harga_barang' => $request->harga_barang,
+            'gambar' => $imageName
+        ]);
 
         return redirect('admin/listbarang');
     }

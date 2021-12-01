@@ -45,8 +45,8 @@
                                 <td>{{ $item->nama_barang }}</td>
                                 <td style="text-align: center">{{ $item->satuan_barang }}</td>
                                 <td style="text-align: center">{{ $item->jumlah }}</td>
-                                <td>{{ $item->daftarsupplier->nama_supplier }}</td>
-                                <td>{{ $item->daftarpegawai->nama_pegawai }}</td>
+                                <td>{{ $item->daftarSupplier->nama_supplier }}</td>
+                                <td>{{ $item->daftarPegawai->nama_pegawai }}</td>
                                 <td>{{ $item->alasan }}</td>
                             </tr>
                         @endforeach

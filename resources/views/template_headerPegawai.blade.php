@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Penjualan</a>
+                    <a class="nav-link" href="/pegawai/listpenjualan">Penjualan</a>
                 </li>
 
                 <li class="nav-item">

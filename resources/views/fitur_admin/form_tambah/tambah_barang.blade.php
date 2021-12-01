@@ -9,7 +9,7 @@
                 <div class="card-body p-4 p-sm-5">
                     <h5 class="card-title text-center mb-5 fw-light fs-5" style="font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:black;">Tambah Barang</h5>
 
-                    <form action="/admin/barang" method="POST">
+                    <form action="/admin/barang" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="">
 
@@ -41,6 +41,11 @@
                         <div class="form-floating mb-3">
                             <label for="" style="color: black">Harga Barang</label>
                             <input type="number" name="harga_barang" class="form-control" id="" value="" placeholder="Masukkan harga barang...">
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="" style="color: black">Gambar (jpg, jpeg, png)</label>
+                            <input type="file" name="gambar" class="">
                         </div>
 
                         <div class="form-floating mb-3">

@@ -33,6 +33,7 @@
                         <th style="">Satuan</th>
                         <th style="">Stok</th>
                         <th style="">Harga</th>
+                        <th style="">Gambar</th>
                         <th style="text-align:center">Aksi</th>
                     </tr>
                 </thead>
@@ -47,6 +48,9 @@
                                 <td>{{ $item->satuan_barang }}</td>
                                 <td>{{ $item->stok_barang }}</td>
                                 <td>Rp. {{ $item->harga_barang }}, -</td>
+                                <td style=" text-align:center">
+                                    <img class="img-fluid" style="width:100px; height:100px;" src="{{ asset('/img_barang/'.$item->gambar) }}" alt="">
+                                </td>
                                 <td style="text-align:center"><a href="{{ url("/admin/pemesanan/tambah/$item->id") }}"><button type="button" class="btn btn-success">Pesan</button></a></td>
                             </tr>
                         @endforeach
