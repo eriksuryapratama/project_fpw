@@ -3,7 +3,7 @@
 
 @section('judul')
 <div class="container" style="border: 3px solid white;padding:20px;background-color:#2b4251">
-    <h1 style="text-align: center;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:white;">Data Pemesanan</h1>
+    <h1 style="text-align: center;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:white;">Data Retur</h1>
 </div>
 @endsection
 
@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-4">
-                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Pesanan</h4>
+                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Retur</h4>
                     </div>
 
                 </div>
@@ -27,12 +27,13 @@
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th style="text-align:center;">Kode Pesanan</th>
+                        <th style="text-align:center;">Kode Retur</th>
                         <th style="text-align:center;">Nama Barang</th>
-                        <th style="text-align:center;">Satuan Barang</th>
-                        <th style="text-align:center;">Jumlah Barang</th>
+                        <th style="text-align:center;">Satuan</th>
+                        <th style="text-align:center;">Jumlah</th>
                         <th style="text-align:center;">Supplier</th>
-                        <th style="text-align:center" colspan="2">Aksi</th>
+                        <th style="text-align:center;">Pegawai</th>
+                        <th style="text-align:center;">Alasan</th>
                     </tr>
                 </thead>
 
@@ -40,18 +41,18 @@
                     @if (null != $result)
                         @foreach ($result as $item)
                             <tr>
-                                <td>{{ $item->kode_pemesanan }}</td>
+                                <td>{{ $item->kode_retur }}</td>
                                 <td>{{ $item->nama_barang }}</td>
                                 <td style="text-align: center">{{ $item->satuan_barang }}</td>
                                 <td style="text-align: center">{{ $item->jumlah }}</td>
                                 <td>{{ $item->daftarsupplier->nama_supplier }}</td>
-                                <td style="text-align:center"><a href="{{ url("/pegawai/send/$item->id") }}"><button type="button" class="btn btn-success">Terima</button></a></td>
-                                <td style="text-align:center"><a href="{{ url("/pegawai/retur/$item->id") }}"><button type="button" class="btn btn-danger">Retur</button></a></td>
+                                <td>{{ $item->daftarpegawai->nama_pegawai }}</td>
+                                <td>{{ $item->alasan }}</td>
                             </tr>
                         @endforeach
                     @else
                             <tr>
-                                <td colspan="6">Tidak ada daftar Pesanan Barang</td>
+                                <td colspan="6">Tidak ada daftar Retur Barang</td>
                             </tr>
                     @endif
                 </tbody>

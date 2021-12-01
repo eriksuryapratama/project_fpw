@@ -136,6 +136,8 @@ class BarangController extends Controller
 
         return redirect('admin/listbarang');
     }
+
+    // FUNGSI LIST BARANG ADMIN
     public function list_barang()
     {
         $result = Barang::all();
@@ -144,6 +146,8 @@ class BarangController extends Controller
 
        return view('fitur_admin.list_admin.list_barang', $param);
     }
+
+    // FUNGSI LIST BARANG PEGAWAI
     public function list_barangpegawai()
     {
         $result = Barang::all();
@@ -153,18 +157,22 @@ class BarangController extends Controller
        return view('fitur_pegawai.listbarangpegawai', $param);
     }
 
+    // FUNGSI DELETE BARANG
     public function deletebarang(Request $req)
     {
         Barang::find($req->id)->delete();
         return redirect('admin/listbarang');
     }
 
+    // FUNGSI AMBIL ID BARANG
     public function updateindex_barang(Request $req)
     {
         $barang = Barang::find($req->id);
         $data['result'] = $barang;
         return view('fitur_admin.form_edit.edit_barang', $data);
     }
+
+    // FUNGSI UPDATE BARANG
     public function updatebarang(Request $req)
     {
         $rules = [
@@ -193,4 +201,6 @@ class BarangController extends Controller
 
         return redirect('/admin/listbarang');
     }
+
+
 }

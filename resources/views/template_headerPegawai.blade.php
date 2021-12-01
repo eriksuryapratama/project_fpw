@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pegawai</a>
+                    <a class="nav-link" href="#">{{ Auth::guard('pegawai_guard')->user()->nama_pegawai }}</a>
 
                 </li>
             </ul>
@@ -23,6 +23,10 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="/pegawai/listbarang">Data Barang</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/pegawai/listretur">Data Retur</a>
                 </li>
 
                 <li class="nav-item">

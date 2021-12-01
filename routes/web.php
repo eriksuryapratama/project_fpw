@@ -85,10 +85,19 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
 
 //PEGAWAI
 Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
+    // PENERIMAAN
     Route::get('/', [PenerimaanController::class, 'list_pengiriman_pegawai']);
     Route::get('/send/{id}', [PenerimaanController::class, 'acceptindex_pegawai']);
     Route::post('/send', [PenerimaanController::class, 'accept_pegawai']);
+
+    // BARANG
     Route::get('/listbarang', [BarangController::class, 'list_barangpegawai']);
+
+    // RETUR
+    Route::get('/listretur', [PenerimaanController::class, 'list_retur']);
+    Route::get('/retur/{id}', [PenerimaanController::class, 'index_retur']);
+    Route::post('/retur', [PenerimaanController::class, 'tambah_retur']);
+
 });
 
 //SUPPLIER
