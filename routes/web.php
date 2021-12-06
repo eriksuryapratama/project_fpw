@@ -101,6 +101,9 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
 
     // PENJUALAN
     Route::get('/listpenjualan', [PenjualanController::class, 'list_penjualan']);
+    Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'delete_penjualan']);
+    Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
+    Route::post('/penjualan', [PenjualanController::class, 'penjualan_input']);
 
 
 });

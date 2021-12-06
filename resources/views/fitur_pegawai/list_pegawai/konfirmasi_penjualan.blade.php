@@ -16,11 +16,11 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-4">
-                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Penjualan</h4>
+                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">Tambah Penjualan</h4>
                     </div>
-                    <div class="col-2">
+                    {{-- <div class="col-2">
                         <a href="/pegawai/penjualan"><button type="button" class="btn btn-success">Tambah Data</button></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -29,31 +29,42 @@
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th style="text-align:center;">No.</th>
-                        <th style="text-align:center;">Nomor Nota</th>
-                        <th style="text-align:center;">Nama Barang</th>
-                        <th style="text-align:center;">Satuan Barang</th>
-                        <th style="text-align:center;">Harga Barang</th>
-                        <th style="text-align:center;">Jumlah</th>
-                        <th style="text-align:center;">Sub Total</th>
-                        <th style="text-align:center;">Action</th>
+                        <th>Kode</th>
+                        <th style="">Nama</th>
+                        <th style="">Kategori</th>
+                        <th style="">Satuan</th>
+                        <th style="">Stok</th>
+                        <th style="">Harga</th>
+                        <th style="">Gambar</th>
+                        <th style="text-align:center" colspan="2">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @if (null != $result)
+
                         @foreach ($result as $item)
                             <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $item->no_nota }}</td>
+
+
+                                <td>{{ $item->kode_barang }}</td>
                                 <td>{{ $item->nama_barang }}</td>
+                                <td>{{$item->daftarkategori->nama_kategori}}</td>
                                 <td>{{ $item->satuan_barang }}</td>
+                                <td>{{ $item->stok_barang }}</td>
                                 <td>Rp. {{ $item->harga_barang }}</td>
-                                <td>{{ $item->jumlah }}</td>
-                                <td>Rp. {{ $item->total }}</td>
-                                <td style="text-align:center"><a href={{ url("/pegawai/penjualan/delete/$item->id") }}><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                <td style=" text-align:center">
+                                    <img class="img-fluid" style="width:100px; height:100px;" src="{{ asset('/img_barang/'.$item->gambar) }}" alt="">
+                                </td>
+                                <form action="" method="post">
+                                    @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <td style="text-align:center"><input type="number" name="jumlah_beli" style="width: 50px"></td>
+                                <td style="text-align:center"><input type="submit" name="btn_beli" class="btn btn-success" value="BELI"></td>
+                                </form>
                             </tr>
                         @endforeach
+
                     @else
                             <tr>
                                 <td colspan="6">Tidak ada daftar Penjualan Barang</td>
@@ -61,7 +72,7 @@
                     @endif
                 </tbody>
             </table>
-            <a href="/pegawai/penjualan"><button type="button" class="btn btn-success">Checkout</button></a>
+
     </div>
 @endsection
 
