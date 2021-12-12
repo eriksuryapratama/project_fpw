@@ -104,6 +104,8 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'delete_penjualan']);
     Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
     Route::post('/penjualan', [PenjualanController::class, 'penjualan_input']);
+    Route::get('/report', [PenjualanController::class, 'report']);
+    Route::post('/report', [PenjualanController::class, 'report_payment']);
 
 
 });

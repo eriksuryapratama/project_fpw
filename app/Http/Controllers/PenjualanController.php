@@ -55,4 +55,36 @@ class PenjualanController extends Controller
 
         return redirect('pegawai/penjualan');
     }
+    public function report(Request $req)
+    {
+        $subtotal = 0;
+        $jum = DB::table('dtrans')->select(DB::raw('count(*) as jumlah'))->first();
+        $no_nota = "N".str_pad((intval($jum->jumlah) + 1),4,"0",STR_PAD_LEFT);
+        $result = DB::table('htrans')->where('no_nota','=',$no_nota)->get();
+
+        foreach ($result as $item) {
+            $subtotal += $item->total;
+        }
+        $param['result'] = $result;
+        $param['subtotal'] = $subtotal;
+        return view('fitur_pegawai.list_pegawai.report_penjualan', $param);
+    }
+    public function report_payment(Request $req)
+    {
+        $jum = DB::table('dtrans')->select(DB::raw('count(*) as jumlah'))->first();
+        $no_nota = "N".str_pad((intval($jum->jumlah) + 1),4,"0",STR_PAD_LEFT);
+        $pegawai = $req->session()->get('pegawai');
+
+        $result = DB::table('dtrans')->insert([
+            "no_nota"=>$no_nota,
+            "kode_pegawai"=>$pegawai,
+            "subtotal"=>$req->subtotal
+        ]);
+
+        if($result){
+            return redirect('report')->with('message', 'Payment Success');
+        }else {
+            return redirect('report')->with('message', 'Payment Failed');
+        }
+    }
 }
