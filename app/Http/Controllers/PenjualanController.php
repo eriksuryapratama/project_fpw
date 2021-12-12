@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Dtrans;
 use App\Models\Htrans;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PenjualanController extends Controller
@@ -73,18 +74,19 @@ class PenjualanController extends Controller
     {
         $jum = DB::table('dtrans')->select(DB::raw('count(*) as jumlah'))->first();
         $no_nota = "N".str_pad((intval($jum->jumlah) + 1),4,"0",STR_PAD_LEFT);
-        $pegawai = $req->session()->get('pegawai');
+        // $pegawai = $req->session()->get('pegawai');
+        $pegawai = Auth::guard('pegawai_guard')->user()->kode_pegawai;
 
-        $result = DB::table('dtrans')->insert([
+        $result = Dtrans::create([
             "no_nota"=>$no_nota,
             "kode_pegawai"=>$pegawai,
             "subtotal"=>$req->subtotal
         ]);
 
         if($result){
-            return redirect('report')->with('message', 'Payment Success');
+            return redirect('/pegawai/report')->with('message', 'Payment Success');
         }else {
-            return redirect('report')->with('message', 'Payment Failed');
+            return redirect('/pegawai/report')->with('message', 'Payment Failed');
         }
     }
 }

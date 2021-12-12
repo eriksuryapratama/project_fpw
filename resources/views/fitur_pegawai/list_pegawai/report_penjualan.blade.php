@@ -39,6 +39,8 @@
                 </thead>
 
                 <tbody>
+                    <form action="" method="POST">
+                     @csrf
                     @if (null != $result)
                         @foreach ($result as $item)
                             <tr>
@@ -60,7 +62,10 @@
                 </tbody>
             </table>
             <h2>Subtotal : Rp. {{ $subtotal }},.</h3>
-            <a href="/pegawai/report"><button type="button" class="btn btn-success">Pay Now</button></a>
+                <input type="hidden" name="subtotal" value="{{ $subtotal }}">
+            <input type="submit" class="btn btn-success" value="Pay now">
+        </form>
     </div>
+
 @endsection
 
