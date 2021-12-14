@@ -17,7 +17,7 @@ class CreateAdminTable extends Migration
             $table->id();
             $table->string('kode_admin',5);
             $table->string('nama_admin',100);
-            $table->string('telepon',15);
+            $table->string('telepon',20);
             $table->string('username',100);
             $table->string('password',255);
         });

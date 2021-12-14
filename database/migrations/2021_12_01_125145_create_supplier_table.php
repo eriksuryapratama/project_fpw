@@ -18,7 +18,7 @@ class CreateSupplierTable extends Migration
             $table->string('kode_supplier',5);
             $table->string('nama_supplier',100);
             $table->string('alamat',100);
-            $table->string('telepon',15);
+            $table->string('telepon',20);
             $table->string('email',100);
             $table->string('username',100);
             $table->string('password',255);

@@ -17,7 +17,7 @@ class CreatePegawaiTable extends Migration
             $table->id();
             $table->string('kode_pegawai',5);
             $table->string('nama_pegawai',100);
-            $table->string('telepon',15);
+            $table->string('telepon',20);
             $table->string('username',100);
             $table->string('password',255);
         });
