@@ -61,7 +61,7 @@
                     @endif
                 </tbody>
             </table>
-            <a href="/pegawai/report"><button type="button" class="btn btn-success">Pay Now</button></a>
+            {{-- <a href="/pegawai/report"><button type="button" class="btn btn-success">Pay Now</button></a> --}}
     </div>
 @endsection
 

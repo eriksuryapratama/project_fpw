@@ -54,7 +54,18 @@ class PenjualanController extends Controller
             "total"=>$total
         ]);
 
-        return redirect('pegawai/penjualan');
+        $stokbarang = intval($barang_list->stok_barang);
+        $inputjumlah = $req->jumlah_beli;
+        $stokakhir = $stokbarang - $inputjumlah;
+
+
+        $result2 = Barang::find($req->id)->update([
+            "stok_barang" => $stokakhir
+        ]);
+
+
+
+        return redirect('pegawai/report');
     }
     public function report(Request $req)
     {
