@@ -96,6 +96,7 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/', [PenerimaanController::class, 'list_pengiriman_pegawai']);
     Route::get('/send/{id}', [PenerimaanController::class, 'acceptindex_pegawai']);
     Route::post('/send', [PenerimaanController::class, 'accept_pegawai']);
+    Route::get('/caripenerimaan', [PenerimaanController::class, 'cariPenerimaan']);
 
     // BARANG
     Route::get('/listbarang', [BarangController::class, 'list_barangpegawai']);
@@ -105,6 +106,7 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/listretur', [PenerimaanController::class, 'list_retur']);
     Route::get('/retur/{id}', [PenerimaanController::class, 'index_retur']);
     Route::post('/retur', [PenerimaanController::class, 'tambah_retur']);
+    Route::get('/cariretur', [PenerimaanController::class, 'cariRetur']);
 
     // PENJUALAN
     Route::get('/listpenjualan', [PenjualanController::class, 'list_penjualan']);
@@ -112,7 +114,9 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
     Route::post('/penjualan', [PenjualanController::class, 'penjualan_input']);
     Route::get('/caripenjualan', [PenjualanController::class, 'cariPenjualan']);
+    Route::get('/caribarangpenjualan', [PenjualanController::class, 'cariBarangPenjualan']);
 
+    //REPORT
     Route::get('/report', [PenjualanController::class, 'report']);
     Route::post('/report', [PenjualanController::class, 'report_payment']);
 

@@ -14,12 +14,41 @@ class PenerimaanController extends Controller
     //function menampilkan data yang cek kirim = 1 dan cek terima = 0
     public function list_pengiriman_pegawai()
     {
-        $result = Pemesanan::all()->where('cek_kirim',1)
-                                    ->where('cek_terima',0);
+        $result = Pemesanan::where('cek_kirim',1)
+                                ->where('cek_terima',0)->get();
         $param = [];
         $param['result'] = $result;
 
         return view('fitur_pegawai.listpengiriman', $param);
+    }
+
+    //CARI DATA PENERIMAAN
+    public function cariPenerimaan(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Pemesanan::where('nama_barang', 'like', "%".$cari."%")
+            ->where('cek_kirim', '=', '1')->where('cek_terima', '=', '0')->get();
+            return view('fitur_pegawai.listpengiriman',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Pemesanan::where('satuan_barang', 'like', "%".$cari."%")
+            ->where('cek_kirim', '=', '1')->where('cek_terima', '=', '0')->get();
+            return view('fitur_pegawai.listpengiriman',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Pemesanan::where('cek_kirim', '=', '1')->where('cek_terima', '=', '0')->get();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_pegawai.listpengiriman', $data);
+        }
     }
 
     //function menampilkan form konfirmasi
@@ -62,6 +91,33 @@ class PenerimaanController extends Controller
         $param['result'] = $result;
 
        return view('fitur_pegawai.list_pegawai.list_retur', $param);
+    }
+
+    //CARI DATA RETUR
+    public function cariRetur(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Retur::where('nama_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.list_retur',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Retur::where('satuan_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.list_retur',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Retur::all();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_pegawai.list_pegawai.list_retur', $data);
+        }
     }
 
     // CARI INDEX RETUR

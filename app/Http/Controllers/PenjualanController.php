@@ -61,6 +61,39 @@ class PenjualanController extends Controller
         return view('fitur_pegawai.list_pegawai.konfirmasi_penjualan', $param);
     }
 
+    //CARI BARANG PENJUALAN
+    public function cariBarangPenjualan(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Barang::where('nama_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.konfirmasi_penjualan',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan harga
+        if($request->kategori == "sharga"){
+            $caridata = Barang::where('harga_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.konfirmasi_penjualan',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Barang::where('satuan_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.konfirmasi_penjualan',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Barang::all();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_pegawai.list_pegawai.konfirmasi_penjualan', $data);
+        }
+    }
+
     public function penjualan_input(Request $req)
     {
         $barang_list = Barang::find($req->id);

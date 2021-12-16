@@ -3,7 +3,7 @@
 
 @section('judul')
 <div class="container" style="border: 3px solid white;padding:20px;background-color:#2b4251">
-    <h1 style="text-align: center;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:white;">Data Pemesanan</h1>
+    <h1 style="text-align: center;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;color:white;">Data Penerimaan</h1>
 </div>
 @endsection
 
@@ -16,11 +16,27 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-4">
-                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Pesanan</h4>
+                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Penerimaan</h4>
                     </div>
 
                 </div>
             </div>
+
+            <br>
+
+            {{-- FORM SEARCH --}}
+            <form action="/pegawai/caripenerimaan" method="GET">
+                <select name="kategori">
+                    <option value="" disabled selected>-- Cari menurut --</option>
+                    <option value="snama">Nama Barang</option>
+                    <option value="ssatuan">Satuan Barang</option>
+                </select>
+
+                <br><br>
+
+                <input type="text" name="cari" placeholder="Search.." value="{{ old('cari') }}">
+                <input type="submit" class="btn btn-info" value="Cari">
+            </form>
 
             <br>
 
