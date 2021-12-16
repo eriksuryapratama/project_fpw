@@ -123,13 +123,13 @@ class PemesananController extends Controller
                                  ->get();
             return view('fitur_supplier.listpemesanan',['result' => $caridata]);
         }
-        // if($request->kategori == "ssatuan"){
-        //     $caridata = Pemesanan::where('satuan_barang', 'like', "%".$cari."%")
-        //                          ->where('cek_kirim',0)
-        //                          ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier)
-        //                          ->get();
-        //     return view('fitur_supplier.listpemesanan',['result' => $caridata]);
-        // }
+        if($request->kategori == "ssatuan"){
+            $caridata = Pemesanan::where('satuan_barang', 'like', "%".$cari."%")
+                                 ->where('cek_kirim',0)
+                                 ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier)
+                                 ->get();
+            return view('fitur_supplier.listpemesanan',['result' => $caridata]);
+        }
         else{
             $barang = Pemesanan::all()->where('cek_kirim',0)
                                       ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier);

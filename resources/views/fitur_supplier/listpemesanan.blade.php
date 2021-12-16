@@ -27,6 +27,7 @@
             <select name="kategori">
                 <option value="" disabled selected>-- Cari menurut --</option>
                 <option value="snama">Nama Barang</option>
+                <option value="ssatuan">Satuan Barang</option>
 
             </select>
 
