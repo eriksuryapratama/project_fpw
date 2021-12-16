@@ -106,4 +106,31 @@ class PegawaiController extends Controller
 
         return redirect('/admin/listpegawai');
     }
+
+    // CARI PEGAWAI
+    public function cariPegawai(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama pegawai
+        if($request->kategori == "snama"){
+            $caridata = Pegawai::where('nama_pegawai', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_pegawai',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan nomor telepon
+        if($request->kategori == "stelepon"){
+            $caridata = Pegawai::where('telepon', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_pegawai',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $pegawai = Pegawai::all();
+            $data = [];
+            $data['result'] = $pegawai;
+            return view('fitur_admin.list_admin.list_pegawai', $data);
+        }
+    }
 }

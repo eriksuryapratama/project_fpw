@@ -83,7 +83,6 @@ class PemesananController extends Controller
         return view('fitur_admin.list_admin.list_pemesanan', $param);
     }
 
-
     // LIST PEMESANAN SUPPLIER
     public function list_pemesanan_supplier()
     {
@@ -95,6 +94,7 @@ class PemesananController extends Controller
         return view('fitur_supplier.listpemesanan', $param);
     }
 
+    // AMBIL INDEX PEMESANAN
     public function sendindex_supplier(Request $req)
     {
         $pemesanan = Pemesanan::find($req->id);
@@ -102,6 +102,7 @@ class PemesananController extends Controller
         return view('fitur_supplier.konfirmasi_pemesanan', $data);
     }
 
+    // UPDATE PEMESANAN
     public function send_supplier(Request $req)
     {
         $result = Pemesanan::find($req->id)->update([
@@ -109,5 +110,72 @@ class PemesananController extends Controller
         ]);
 
         return redirect('/supplier');
+    }
+
+    // CARI PEMESANAN
+    public function cariPemesanan(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Pemesanan::where('nama_barang', 'like', "%".$cari."%")
+                                 ->where('cek_kirim',0)
+                                 ->where('cek_terima',0)
+                                 ->get();
+            return view('fitur_admin.list_admin.list_pemesanan',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan satuan
+        if($request->kategori == "ssatuan"){
+            $caridata = Pemesanan::where('satuan_barang', 'like', "%".$cari."%")
+                                 ->where('cek_kirim',0)
+                                 ->where('cek_terima',0)
+                                 ->get();
+            return view('fitur_admin.list_admin.list_pemesanan',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Pemesanan::all()->where('cek_kirim',0)
+                                      ->where('cek_terima',0);
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_admin.list_admin.list_pemesanan', $data);
+        }
+    }
+
+    // CARI BARANG PEMESANAN
+    public function cariBarangPemesanan(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Barang::where('nama_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_barang_pemesanan',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Barang::where('satuan_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_barang_pemesanan',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan harga
+        if($request->kategori == "sharga"){
+            $caridata = Barang::where('harga_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_barang_pemesanan',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Barang::all();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_admin.list_admin.list_barang_pemesanan', $data);
+        }
     }
 }

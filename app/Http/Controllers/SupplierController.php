@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 class SupplierController extends Controller
 {
-     /////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     ///-----------------------------SUPPLIER------------------------------///
     /////////////////////////////////////////////////////////////////////////
 
@@ -71,12 +71,14 @@ class SupplierController extends Controller
        return view('fitur_admin.list_admin.list_supplier', $param);
     }
 
+    // FUNGSI DELETE SUPPLIER
     public function deletesupplier(Request $req)
     {
         Supplier::find($req->id)->delete();
         return redirect('admin/listsupplier');
     }
 
+    // FUNGSI AMBIL INDEX SUPPLIER
     public function updateindex_supplier(Request $req)
     {
         $supplier = Supplier::find($req->id);
@@ -84,6 +86,7 @@ class SupplierController extends Controller
         return view('fitur_admin.form_edit.edit_supplier', $data);
     }
 
+    // FUNGSI UPDATE SUPPLIER
     public function updatesupplier(Request $req)
     {
         $rules = [
@@ -116,5 +119,36 @@ class SupplierController extends Controller
         return redirect('/admin/listsupplier');
     }
 
+    // CARI SUPPLIER
+    public function cariSupplier(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
 
+        // jika dicari berdasarkan nama supplier
+        if($request->kategori == "snama"){
+            $caridata = Supplier::where('nama_supplier', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_supplier',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan alamat
+        if($request->kategori == "salamat"){
+            $caridata = Supplier::where('alamat', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_supplier',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan nomor telepon
+        if($request->kategori == "stelepon"){
+            $caridata = Supplier::where('telepon', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_supplier',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $supplier = Supplier::all();
+            $data = [];
+            $data['result'] = $supplier;
+            return view('fitur_admin.list_admin.list_supplier', $data);
+        }
+    }
 }

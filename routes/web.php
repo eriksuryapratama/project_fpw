@@ -41,6 +41,7 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/kategori/delete/{id}', [BarangController::class, 'deletekategori']);
     Route::get('/kategori/update/{id}', [BarangController::class, 'updateindex_kategori']);
     Route::post('/kategori/update', [BarangController::class, 'updatekategori']);
+    Route::get('/carikategori', [BarangController::class, 'cariKategori']);
 
     //barang
     Route::get('/barang', [BarangController::class, 'form_barang']);
@@ -49,13 +50,16 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/barang/delete/{id}', [BarangController::class, 'deletebarang']);
     Route::get('/barang/update/{id}', [BarangController::class, 'updateindex_barang']);
     Route::post('/barang/update', [BarangController::class, 'updatebarang']);
+    Route::get('/caribarang', [BarangController::class, 'cariBarang']);
 
-    // PEMESANAN
+    //pemesanan
+    Route::get('/pemesanan', [PemesananController::class, 'list_barang']);
     Route::get('/pemesanan/tambah/{id}', [PemesananController::class, 'index_pemesanan']);
     Route::get('/tambahpemesanan', [PemesananController::class, 'form_pemesanan']);
     Route::post('/tambahpemesanan', [PemesananController::class, 'tambah_pemesanan']);
-    Route::get('/pemesanan', [PemesananController::class, 'list_barang']);
     Route::get('/listpemesanan', [PemesananController::class, 'list_pemesanan']);
+    Route::get('/caripemesanan', [PemesananController::class, 'cariPemesanan']);
+    Route::get('/caribarangpemesanan', [PemesananController::class, 'cariBarangPemesanan']);
 
     //supplier
     Route::get('/supplier', [SupplierController::class, 'form_supplier']);
@@ -64,7 +68,7 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/supplier/delete/{id}', [SupplierController::class, 'deletesupplier']);
     Route::get('/supplier/update/{id}', [SupplierController::class, 'updateindex_supplier']);
     Route::post('/supplier/update', [SupplierController::class, 'updatesupplier']);
-
+    Route::get('/carisupplier', [SupplierController::class, 'cariSupplier']);
 
     //pegawai
     Route::get('/pegawai', [PegawaiController::class, 'form_pegawai']);
@@ -73,6 +77,7 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/pegawai/delete/{id}', [PegawaiController::class, 'deletepegawai']);
     Route::get('/pegawai/update/{id}', [PegawaiController::class, 'updateindex_pegawai']);
     Route::post('/pegawai/update', [PegawaiController::class, 'updatepegawai']);
+    Route::get('/caripegawai', [PegawaiController::class, 'cariPegawai']);
 
     //admin
     Route::get('/admin', [AdminController::class, 'form_admin']);
@@ -81,6 +86,7 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/admin/delete/{id}', [AdminController::class, 'deleteadmin']);
     Route::get('/admin/update/{id}', [AdminController::class, 'updateindex_admin']);
     Route::post('/admin/update', [AdminController::class, 'updateadmin']);
+    Route::get('/cariadmin', [AdminController::class, 'cariAdmin']);
 
 });
 
@@ -106,7 +112,6 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::post('/penjualan', [PenjualanController::class, 'penjualan_input']);
     Route::get('/report', [PenjualanController::class, 'report']);
     Route::post('/report', [PenjualanController::class, 'report_payment']);
-
 
 });
 

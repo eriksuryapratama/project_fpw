@@ -63,7 +63,7 @@ class AdminController extends Controller
         return redirect('admin/listadmin');
     }
 
-     // FUNGSI LIST ADMIN
+    // FUNGSI LIST ADMIN
     public function list_admin()
     {
         $result = Admin::all();
@@ -73,7 +73,7 @@ class AdminController extends Controller
         return view('fitur_admin.list_admin.list_admin', $param);
     }
 
-     // DELETE ADMIN
+    // DELETE ADMIN
     public function deleteadmin(Request $req)
     {
 
@@ -113,5 +113,32 @@ class AdminController extends Controller
         ]);
 
         return redirect('/admin/listadmin');
+    }
+
+    // CARI ADMIN
+    public function cariAdmin(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama admin
+        if($request->kategori == "snama"){
+            $caridata = Admin::where('nama_admin', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_admin',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan nomor telepon
+        if($request->kategori == "stelepon"){
+            $caridata = Admin::where('telepon', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_admin',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $admin = Admin::all();
+            $data = [];
+            $data['result'] = $admin;
+            return view('fitur_admin.list_admin.list_admin', $data);
+        }
     }
 }

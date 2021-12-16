@@ -48,7 +48,7 @@ class BarangController extends Controller
         return redirect('admin/listkategori');
     }
 
-    //fungsi untuk menampilkan halaman list kategori
+    // LIST KATEGORI
     public function list_kategori()
     {
         $result = Kategori::all();
@@ -57,12 +57,15 @@ class BarangController extends Controller
         return view('fitur_admin.list_admin.list_kategori', $param);
     }
 
+    // DELETE KATEGORI
     public function deletekategori(Request $req)
     {
 
         Kategori::find($req->id)->delete();
         return redirect('admin/listkategori');
     }
+
+    // AMBIL INDEX KATEGORI
     public function updateindex_kategori(Request $req)
     {
         $kategori = Kategori::find($req->id);
@@ -70,6 +73,7 @@ class BarangController extends Controller
         return view('fitur_admin.form_edit.edit_kategori', $data);
     }
 
+    // UPDATE KATEGORI
     public function updatekategori(Request $req)
     {
         $rules = [
@@ -90,6 +94,27 @@ class BarangController extends Controller
         ]);
 
         return redirect('/admin/listkategori');
+    }
+
+    // CARI KATEGORI
+    public function cariKategori(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama kategori
+        if($request->kategori == "snama"){
+            $caridata = Kategori::where('nama_kategori', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_kategori',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $kategori = Kategori::all();
+            $data = [];
+            $data['result'] = $kategori;
+            return view('fitur_admin.list_admin.list_kategori', $data);
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////
@@ -219,5 +244,36 @@ class BarangController extends Controller
         return redirect('/admin/listbarang');
     }
 
+    // CARI BARANG
+    public function cariBarang(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
 
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Barang::where('nama_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_barang',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Barang::where('satuan_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_barang',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan harga
+        if($request->kategori == "sharga"){
+            $caridata = Barang::where('harga_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_admin.list_admin.list_barang',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Barang::all();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_admin.list_admin.list_barang', $data);
+        }
+    }
 }

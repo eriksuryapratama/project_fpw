@@ -10,6 +10,7 @@
 {{-- Isi Halaman --}}
 @section('konten')
     <div class="container" style="background-color: white; padding:20px;">
+
         {{-- PESAN ERROR --}}
         <div class="container" style="background-color: red;color:white;">
             @if (Session::has('message'))
@@ -33,13 +34,31 @@
 
         <br>
 
+        {{-- FORM SEARCH --}}
+        <form action="/admin/cariadmin" method="GET">
+            <select name="kategori">
+                <option value="" disabled selected>-- Cari menurut --</option>
+                <option value="snama">Nama Admin</option>
+                <option value="stelepon">Nomor Telepon</option>
+            </select>
+
+            <br><br>
+
+            <input type="text" name="cari" placeholder="Search.." value="{{ old('cari') }}">
+            <input type="submit" class="btn btn-info" value="Cari">
+        </form>
+
+        <br>
+
         {{-- TABEL ADMIN --}}
         <table id="table" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>Kode</th>
-                    <th style="">Nama</th>
-                    <th style="">Telepon</th>
+                    <th style="text-align:center">No.</th>
+                    <th style="text-align:center">Kode</th>
+                    <th style="text-align:center">Nama</th>
+                    <th style="text-align:center">Telepon</th>
+                    <th style="text-align:center">Username</th>
                     <th style="text-align:center" colspan="2">Aksi</th>
                 </tr>
             </thead>
@@ -48,9 +67,11 @@
                 @if (null != $result)
                     @foreach ($result as $item)
                         <tr>
-                            <td>{{ $item->kode_admin }}</td>
+                            <td style="text-align:center">{{$loop ->index + 1}}</td>
+                            <td style="text-align:center">{{ $item->kode_admin }}</td>
                             <td>{{ $item->nama_admin }}</td>
-                            <td>{{ $item->telepon }}</td>
+                            <td style="text-align:center">{{ $item->telepon }}</td>
+                            <td>{{ $item->username }}</td>
                             <td style="text-align:center"><a href="{{ url("/admin/admin/update/$item->id") }}"><button type="button" class="btn btn-warning">Edit</button></a></td>
                             <td style="text-align:center"><a href="{{ url("/admin/admin/delete/$item->id") }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
                         </tr>
