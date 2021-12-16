@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PemesananMail;
 use App\Models\Barang;
 use App\Models\Pemesanan;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PemesananController extends Controller
 {
@@ -46,6 +48,13 @@ class PemesananController extends Controller
         $data = $request->all();
         $data['kode_pemesanan'] = $kd_pemesanan;
         Pemesanan::create($data);
+
+        //kirim email
+        $cariemail = Supplier::where('kode_supplier','=',$request->kode_supplier)->first();
+
+        $pemesanan = Pemesanan::where('kode_supplier','=',$request->kode_supplier)->get();
+
+        Mail::to($cariemail->email)->send(new PemesananMail($pemesanan));
 
         return redirect('admin/listpemesanan');
     }

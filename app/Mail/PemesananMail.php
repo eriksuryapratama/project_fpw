@@ -16,10 +16,11 @@ class PemesananMail extends Mailable
      *
      * @return void
      */
-    
-    public function __construct()
+    protected $pemesanan;
+
+    public function __construct($inputpemesanan)
     {
-        //
+        $this->pemesanan = $inputpemesanan;
     }
 
     /**
@@ -29,6 +30,11 @@ class PemesananMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Pemesanan Barang')
+        ->from('minimarket@gmail.com','minimarket')
+        ->view('emails.pemesanan')
+        ->with([
+            'pemesanan' => $this->pemesanan,
+        ]);
     }
 }

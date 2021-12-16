@@ -4,8 +4,8 @@
 </head>
 <body>
 
-    <h1>Selamat datang!</h1>
-    <h3>Halo, {{ $user->nama }}
+    <h1>Daftar Pesanan</h1>
+    <p>Ini adalah barang-barang yang ingin dipesan oleh minimarket kami</p>
         <table border="1">
                 <thead>
                     <tr>
@@ -17,17 +17,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($listBuku as $buku)
+                    @foreach ($pemesanan as $item)
                     <tr>
-                        <td>{{ $buku->title }}</td>
-                        <td>{{ $buku->tahun }}</td>
-                        <td>{{ $buku->price }}</td>
+                        <td>{{ $item->kode_pemesanan }}</td>
+                        <td>{{ $item->nama_barang }}</td>
+                        <td>{{ $item->satuan_barang }}</td>
+                        <td>{{ $item->jumlah }}</td>
+                        <td>{{ $item->daftarSupplier->nama_supplier }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        <h3 style="">Mau tau lebih lanjut mengenai bagaimana cara menghias email yang baik ? klik <a href="https://stackoverflow.com/questions/127498/what-guidelines-for-html-email-design-are-there">Disini</a></h3>
-            <h3 style="">Mailtrap Starting Guide <a href="https://help.mailtrap.io/article/12-getting-started-guide">Disini</a></h3>
 
 </body>
 </html>
