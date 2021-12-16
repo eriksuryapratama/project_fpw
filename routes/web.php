@@ -121,4 +121,5 @@ Route::prefix('supplier')->middleware(['supplierCek'])->group(function () {
     Route::get('/', [PemesananController::class, 'list_pemesanan_supplier']);
     Route::get('/supplier/send/{id}', [PemesananController::class, 'sendindex_supplier']);
     Route::post('/supplier/send', [PemesananController::class, 'send_supplier']);
+    Route::get('/caribarang', [PemesananController::class, 'cariListPesanan']);
 });

@@ -112,6 +112,33 @@ class PemesananController extends Controller
         return redirect('/supplier');
     }
 
+    public function cariListPesanan(Request $request)
+    {
+        $cari = $request->cari;
+
+        if($request->kategori == "snama"){
+            $caridata = Pemesanan::where('nama_barang', 'like', "%".$cari."%")
+                                 ->where('cek_kirim',0)
+                                 ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier)
+                                 ->get();
+            return view('fitur_supplier.listpemesanan',['result' => $caridata]);
+        }
+        // if($request->kategori == "ssatuan"){
+        //     $caridata = Pemesanan::where('satuan_barang', 'like', "%".$cari."%")
+        //                          ->where('cek_kirim',0)
+        //                          ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier)
+        //                          ->get();
+        //     return view('fitur_supplier.listpemesanan',['result' => $caridata]);
+        // }
+        else{
+            $barang = Pemesanan::all()->where('cek_kirim',0)
+                                      ->where('cek_terima',0)->where('kode_supplier',Auth::guard('supplier_guard')->user()->kode_supplier);
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_supplier.listpemesanan', $data);
+        }
+    }
+
     // CARI PEMESANAN
     public function cariPemesanan(Request $request)
     {

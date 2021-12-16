@@ -22,6 +22,21 @@
             </div>
 
             <br>
+             {{-- FORM SEARCH --}}
+        <form action="/supplier/caribarang" method="GET">
+            <select name="kategori">
+                <option value="" disabled selected>-- Cari menurut --</option>
+                <option value="snama">Nama Barang</option>
+
+            </select>
+
+            <br><br>
+
+            <input type="text" name="cari" placeholder="Search.." value="{{ old('cari') }}">
+            <input type="submit" class="btn btn-info" value="Cari">
+        </form>
+
+        <br>
 
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
