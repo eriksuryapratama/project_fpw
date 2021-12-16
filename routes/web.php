@@ -99,6 +99,7 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
 
     // BARANG
     Route::get('/listbarang', [BarangController::class, 'list_barangpegawai']);
+    Route::get('/caribarangpegawai', [BarangController::class, 'cariBarangPegawai']);
 
     // RETUR
     Route::get('/listretur', [PenerimaanController::class, 'list_retur']);
@@ -110,6 +111,8 @@ Route::prefix('pegawai')->middleware(['pegawaiCek'])->group(function () {
     Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'delete_penjualan']);
     Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
     Route::post('/penjualan', [PenjualanController::class, 'penjualan_input']);
+    Route::get('/caripenjualan', [PenjualanController::class, 'cariPenjualan']);
+
     Route::get('/report', [PenjualanController::class, 'report']);
     Route::post('/report', [PenjualanController::class, 'report_payment']);
 

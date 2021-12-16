@@ -243,6 +243,39 @@ class BarangController extends Controller
 
         return redirect('/admin/listbarang');
     }
+    //CARI BARANG PEGAWAI
+    public function cariBarangPegawai(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Barang::where('nama_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.listbarangpegawai',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Barang::where('satuan_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.listbarangpegawai',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan harga
+        if($request->kategori == "sharga"){
+            $caridata = Barang::where('harga_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.listbarangpegawai',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Barang::all();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_pegawai.listbarangpegawai', $data);
+        }
+    }
+
 
     // CARI BARANG
     public function cariBarang(Request $request)

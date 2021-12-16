@@ -20,6 +20,32 @@ class PenjualanController extends Controller
         return view('fitur_pegawai.list_pegawai.list_penjualan', $param);
     }
 
+    public function cariPenjualan(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // jika dicari berdasarkan nama barang
+        if($request->kategori == "snama"){
+            $caridata = Htrans::where('nama_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.list_penjualan',['result' => $caridata]);
+        }
+
+        // jika dicari berdasarkan kategori
+        if($request->kategori == "ssatuan"){
+            $caridata = Htrans::where('satuan_barang', 'like', "%".$cari."%")->get();
+            return view('fitur_pegawai.list_pegawai.list_penjualan',['result' => $caridata]);
+        }
+
+        // jika tidak sedang mencari
+        else{
+            $barang = Htrans::all();
+            $data = [];
+            $data['result'] = $barang;
+            return view('fitur_pegawai.list_pegawai.list_penjualan', $data);
+        }
+    }
+
     public function delete_penjualan(Request $req)
     {
         Htrans::find($req->id)->delete();
