@@ -43,6 +43,7 @@
             <table id="table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
+                        <th style="text-align:center">No.</th>
                         <th style="text-align:center;">Kode Retur</th>
                         <th style="text-align:center;">Nama Barang</th>
                         <th style="text-align:center;">Satuan</th>
@@ -57,6 +58,7 @@
                     @if (null != $result)
                         @foreach ($result as $item)
                             <tr>
+                                <td style="text-align:center">{{$loop ->index + 1}}</td>
                                 <td>{{ $item->kode_retur }}</td>
                                 <td>{{ $item->nama_barang }}</td>
                                 <td style="text-align: center">{{ $item->satuan_barang }}</td>
