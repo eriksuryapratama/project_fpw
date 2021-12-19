@@ -54,7 +54,12 @@ class PegawaiController extends Controller
         $data['password'] = Hash::make($data['password']);
         Pegawai::create($data);
 
-        return redirect('admin/listpegawai');
+
+        if($data){
+            return redirect('/admin/listpegawai')->with('message', 'Sukses menambah pegawai');
+        }else {
+            return redirect('/admin/listpegawai')->with('message', 'Gagal menambah pegawai');
+        }
     }
 
      // FUNGSI LIST PEGAWAI

@@ -10,12 +10,13 @@
 {{-- Isi Halaman --}}
 @section('konten')
     <div class="container" style="background-color: white; padding:20px;">
-
+        <div style="background-color: red; color:white; text-align:center">
         {{-- PESAN ERROR     --}}
         @if (Session::has('message'))
             {{ Session::get('message') }}
         @endif
-
+    </div>
+    <br>
         {{-- BUTTON TAMBAH --}}
         <div class="container">
             <div class="row justify-content-between">

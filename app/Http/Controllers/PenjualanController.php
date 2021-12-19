@@ -123,8 +123,12 @@ class PenjualanController extends Controller
         ]);
 
 
+         if($result){
+            return redirect('/pegawai/report')->with('message', 'Pembelian Berhasil');
+        }else {
+            return redirect('/pegawai/report')->with('message', 'Pembelian Gagal');
+        }
 
-        return redirect('pegawai/report');
     }
     public function report(Request $req)
     {

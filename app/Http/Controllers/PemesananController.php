@@ -56,7 +56,12 @@ class PemesananController extends Controller
 
         Mail::to($cariemail->email)->send(new PemesananMail($pemesanan));
 
-        return redirect('admin/listpemesanan');
+
+        if($data){
+            return redirect('/admin/listpemesanan')->with('message', 'Sukses menambah pemesanan');
+        }else {
+            return redirect('/admin/listpemesanan')->with('message', 'Gagal menambah pemesanan');
+        }
     }
 
     // FUNGSI TAMBAH PEMESANAN

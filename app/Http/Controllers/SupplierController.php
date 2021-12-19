@@ -58,7 +58,12 @@ class SupplierController extends Controller
         $data['password'] = Hash::make($data['password']);
         Supplier::create($data);
 
-        return redirect('admin/listsupplier');
+
+        if($data){
+            return redirect('/admin/listsupplier')->with('message', 'Sukes menambah supplier');
+        }else {
+            return redirect('/admin/listsupplier')->with('message', 'Gagal menambah supplier');
+        }
     }
 
     // FUNGSI LIST SUPPLIER

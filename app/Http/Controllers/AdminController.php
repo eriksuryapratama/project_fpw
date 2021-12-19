@@ -60,7 +60,12 @@ class AdminController extends Controller
         $data['password'] = Hash::make($data['password']);
         Admin::create($data);
 
-        return redirect('admin/listadmin');
+
+        if($data){
+            return redirect('/admin/listadmin')->with('message', 'Sukses menambah admin');
+        }else {
+            return redirect('/admin/listadmin')->with('message', 'Gagal menambah admin');
+        }
     }
 
     // FUNGSI LIST ADMIN

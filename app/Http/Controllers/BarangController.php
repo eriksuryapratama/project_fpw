@@ -45,7 +45,11 @@ class BarangController extends Controller
         $data['kode_kategori'] = $kd_kategori;
         Kategori::create($data);
 
-        return redirect('admin/listkategori');
+        if($data){
+            return redirect('/admin/listkategori')->with('message', 'Sukses menambah kategori');
+        }else {
+            return redirect('/admin/listkategori')->with('message', 'Gagal menambah kategori');
+        }
     }
 
     // LIST KATEGORI
@@ -166,7 +170,7 @@ class BarangController extends Controller
         // Barang::create($data);
 
         //input ke database
-        Barang::create([
+        $result = Barang::create([
             'kode_barang' => $kd_barang,
             'nama_barang' => $request->nama_barang,
             'kode_kategori' => $request->kode_kategori,
@@ -176,7 +180,11 @@ class BarangController extends Controller
             'gambar' => $imageName
         ]);
 
-        return redirect('admin/listbarang');
+        if($result){
+            return redirect('/admin/listbarang')->with('message', 'Sukses menambah barang');
+        }else {
+            return redirect('/admin/listbarang')->with('message', 'Gagal menambah barang');
+        }
     }
 
     // FUNGSI LIST BARANG ADMIN
