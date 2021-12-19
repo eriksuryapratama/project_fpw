@@ -32,13 +32,9 @@
                             <label for="" style="color: black">Email Supplier</label>
                             <input type="text" name="email" class="form-control" id="" value="{{$result->email}}" placeholder="Masukkan email supplier...">
                         </div>
-                        <div class="form-floating mb-3">
-                            <label for="" style="color: black">Username</label>
-                            <input type="text" name="username" class="form-control" id="" value="{{$result->username}}" placeholder="Masukkan username...">
-                        </div>
 
                         <div class="form-floating mb-3">
-                            <input type="submit" name="btn_regis" style="width: 350px;" class="btn btn-primary btn-login text-uppercase fw-bold" value="Edit Kategori">
+                            <input type="submit" name="btn_regis" style="width: 350px;" class="btn btn-primary btn-login text-uppercase fw-bold" value="Edit Supplier">
                         </div>
 
                     </form>

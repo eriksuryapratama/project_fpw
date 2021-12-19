@@ -18,15 +18,13 @@ class SiteController extends Controller
     {
         if (Auth::guard('admin_guard')->check()) {
             Auth::guard('admin_guard')->logout();
-
-
             return redirect('/login');
+
         } else if (Auth::guard('pegawai_guard')->check()) {
             Auth::guard('pegawai_guard')->logout();
-
-
             return redirect('/login');
         }
+
         else {
             Auth::guard('supplier_guard')->logout();
             return redirect('/login');
@@ -63,9 +61,9 @@ class SiteController extends Controller
 
             //JIKA DAPAT
             if ($result) {
-                return redirect('admin/listadmin');
+                return redirect('admin/listadmin')->with('message', 'Berhasil Login');
             } else {
-                return redirect('login')->with('message', 'Gagal Login !');
+                return redirect('login')->with('message', 'Username / Password anda salah !');
             }
         }
         elseif ($request->role == 'pegawai') {
@@ -80,9 +78,9 @@ class SiteController extends Controller
 
             //JIKA DAPAT
             if ($result) {
-                return redirect('pegawai/');
+                return redirect('pegawai/')->with('message', 'Berhasil Login');
             } else {
-                return redirect('login')->with('message', 'Gagal Login !');
+                return redirect('login')->with('message', 'Username / Password anda salah !');
             }
         }
         elseif ($request->role == 'supplier') {
@@ -97,13 +95,13 @@ class SiteController extends Controller
 
             //JIKA DAPAT
             if ($result) {
-                return redirect('supplier/');
+                return redirect('supplier/')->with('message', 'Berhasil Login');
             } else {
-                return redirect('login')->with('message', 'Gagal Login !');
+                return redirect('login')->with('message', 'Username / Password anda salah !');
             }
         }
         else{
-            return redirect('login')->with('message', 'Gagal Login !');
+            return redirect('login')->with('message', 'Role anda salah !');
         }
     }
 

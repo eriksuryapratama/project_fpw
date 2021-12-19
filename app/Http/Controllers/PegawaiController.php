@@ -75,11 +75,11 @@ class PegawaiController extends Controller
     // DELETE PEGAWAI
     public function deletepegawai(Request $req)
     {
-
         Pegawai::find($req->id)->delete();
-        return redirect('admin/listpegawai');
+        return redirect('admin/listpegawai')->with('message', 'Sukses menghapus data pegawai');
     }
 
+    // FUNGSI AMBIL INDEX UPDATE
     public function updateindex_pegawai(Request $req)
     {
         $pegawai = Pegawai::find($req->id);
@@ -104,12 +104,12 @@ class PegawaiController extends Controller
         $this->validate($req, $rules, $custom_msg);
 
         // UPDATE DATA Pegawai
-        $result = Pegawai::find($req->id)->update([
+        Pegawai::find($req->id)->update([
             "nama_pegawai"=>$req->nama_pegawai,
             "telepon"=>$req->telepon
         ]);
 
-        return redirect('/admin/listpegawai');
+        return redirect('/admin/listpegawai')->with('message', 'Data pegawai berhasil diupdate');
     }
 
     // CARI PEGAWAI

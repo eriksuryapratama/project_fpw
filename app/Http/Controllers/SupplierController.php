@@ -80,7 +80,7 @@ class SupplierController extends Controller
     public function deletesupplier(Request $req)
     {
         Supplier::find($req->id)->delete();
-        return redirect('admin/listsupplier');
+        return redirect('admin/listsupplier')->with('message', 'Sukses menghapus data supplier');
     }
 
     // FUNGSI AMBIL INDEX SUPPLIER
@@ -98,8 +98,7 @@ class SupplierController extends Controller
             'nama_supplier' => 'required',
             'alamat' => 'required',
             'telepon' => ['required', 'min:10', new CekAngka()],
-            'email' => 'required | email',
-            'username' => ['required', 'regex:/^\S*$/u', new CekUsernameSupplier()]
+            'email' => 'required | email'
         ];
 
         // ERROR MESSAGE
@@ -112,16 +111,15 @@ class SupplierController extends Controller
         // VALIDATE
         $this->validate($req, $rules, $custom_msg);
 
-        // UPDATE DATA Kategori
-        $result = Supplier::find($req->id)->update([
+        // UPDATE DATA SUPPLIER
+        Supplier::find($req->id)->update([
             "nama_supplier"=>$req->nama_supplier,
             "alamat"=>$req->alamat,
             "telepon"=>$req->telepon,
-            "email"=>$req->email,
-            "username"=>$req->username
+            "email"=>$req->email
         ]);
 
-        return redirect('/admin/listsupplier');
+        return redirect('/admin/listsupplier')->with('message', 'Data supplier berhasil diupdate');
     }
 
     // CARI SUPPLIER

@@ -61,6 +61,11 @@ Route::prefix('admin')->middleware(['adminCek'])->group(function () {
     Route::get('/caripemesanan', [PemesananController::class, 'cariPemesanan']);
     Route::get('/caribarangpemesanan', [PemesananController::class, 'cariBarangPemesanan']);
 
+    Route::get('/cariemail', [PemesananController::class, 'cari_email']);
+    Route::post('/cariemail', [PemesananController::class, 'konfirmasi_pemesanan']);
+
+    //Route::get('/konfirmasi_pemesanan', [PemesananController::class, 'konfirmasi_pemesanan']);
+
     //supplier
     Route::get('/supplier', [SupplierController::class, 'form_supplier']);
     Route::post('/supplier', [SupplierController::class, 'tambah_supplier']);

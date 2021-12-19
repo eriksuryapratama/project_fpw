@@ -8,27 +8,33 @@
 
 @section('konten')
     <div class="container" style="background-color: white; padding:20px;">
+
+        {{-- PESAN ERROR --}}
+        <div style="background-color: lightgreen; color:black; text-align:center;">
             @if (Session::has('message'))
                 {{ Session::get('message') }}
             @endif
+        </div>
 
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-4">
-                        <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Pesanan</h4>
-                    </div>
+        <br>
 
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <h4 style="text-align: left;font-family: 'Langar', cursive;font-family: 'Russo One', sans-serif;">List Pesanan</h4>
                 </div>
-            </div>
 
-            <br>
-             {{-- FORM SEARCH --}}
+            </div>
+        </div>
+
+        <br>
+
+        {{-- FORM SEARCH --}}
         <form action="/supplier/caribarang" method="GET">
             <select name="kategori">
                 <option value="" disabled selected>-- Cari menurut --</option>
                 <option value="snama">Nama Barang</option>
                 <option value="ssatuan">Satuan Barang</option>
-
             </select>
 
             <br><br>

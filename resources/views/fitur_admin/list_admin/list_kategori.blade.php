@@ -12,11 +12,12 @@
     <div class="container" style="background-color: white; padding:20px;">
 
         {{-- PESAN ERROR --}}
-        <div style="background-color: red; color:white; text-align:center">
+        <div style="background-color: lightgreen; color:black; text-align:center;">
             @if (Session::has('message'))
-            {{ Session::get('message') }}
+                {{ Session::get('message') }}
             @endif
         </div>
+
         <br>
 
         {{-- BUTTON TAMBAH --}}

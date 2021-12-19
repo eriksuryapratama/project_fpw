@@ -12,11 +12,12 @@
     <div class="container" style="background-color: white; padding:20px;">
 
         {{-- PESAN ERROR --}}
-        <div style="background-color: red; color:white; text-align:center">
+        <div style="background-color: lightgreen; color:black; text-align:center;">
             @if (Session::has('message'))
-            {{ Session::get('message') }}
+                {{ Session::get('message') }}
             @endif
         </div>
+
         <br>
 
         {{-- BUTTON TAMBAH --}}
@@ -81,5 +82,20 @@
                 @endif
             </tbody>
         </table>
+
+        <br><br>
+
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <p style="text-align: left;">Pesanan akan dikirimkan ke email supplier.</p>
+                </div>
+
+                <div class="col-2">
+                    <a href="/admin/cariemail"><button type="button" class="btn btn-info">Send Email</button></a>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

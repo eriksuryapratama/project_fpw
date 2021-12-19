@@ -62,9 +62,9 @@ class AdminController extends Controller
 
 
         if($data){
-            return redirect('/admin/listadmin')->with('message', 'Sukses menambah admin');
+            return redirect('/admin/listadmin')->with('message', 'Sukses menambah data admin');
         }else {
-            return redirect('/admin/listadmin')->with('message', 'Gagal menambah admin');
+            return redirect('/admin/listadmin')->with('message', 'Gagal menambah data admin');
         }
     }
 
@@ -81,9 +81,8 @@ class AdminController extends Controller
     // DELETE ADMIN
     public function deleteadmin(Request $req)
     {
-
         Admin::find($req->id)->delete();
-        return redirect('admin/listadmin');
+        return redirect('admin/listadmin')->with('message', 'Sukses menghapus data admin');
     }
 
     // AMBIL INDEX ADMIN
@@ -100,7 +99,6 @@ class AdminController extends Controller
         $rules = [
             'nama_admin' => 'required',
             'telepon' => ['required', 'min:10', new CekAngka()],
-
         ];
 
         // ERROR MESSAGE
@@ -112,12 +110,12 @@ class AdminController extends Controller
         $this->validate($req, $rules, $custom_msg);
 
         // UPDATE DATA Kategori
-        $result = Admin::find($req->id)->update([
+        Admin::find($req->id)->update([
             "nama_admin"=>$req->nama_admin,
             "telepon"=>$req->telepon,
         ]);
 
-        return redirect('/admin/listadmin');
+        return redirect('/admin/listadmin')->with('message', 'Data admin berhasil diupdate');
     }
 
     // CARI ADMIN

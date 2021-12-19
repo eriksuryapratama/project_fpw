@@ -66,7 +66,7 @@ class BarangController extends Controller
     {
 
         Kategori::find($req->id)->delete();
-        return redirect('admin/listkategori');
+        return redirect('admin/listkategori')->with('message', 'Sukses menghapus data kategori');
     }
 
     // AMBIL INDEX KATEGORI
@@ -93,11 +93,11 @@ class BarangController extends Controller
         $this->validate($req, $rules, $custom_msg);
 
         // UPDATE DATA Kategori
-        $result = Kategori::find($req->id)->update([
+        Kategori::find($req->id)->update([
             "nama_kategori"=>$req->nama_kategori
         ]);
 
-        return redirect('/admin/listkategori');
+        return redirect('/admin/listkategori')->with('message', 'Data kategori berhasil diupdate');
     }
 
     // CARI KATEGORI
@@ -163,13 +163,6 @@ class BarangController extends Controller
         $request->gambar->move(public_path('img_barang'), $imageName);
 
         //input ke database
-        //$data = $request->all();
-        // $data['kode_barang'] = $kd_barang;
-        // $data['nama_barang'] =
-        // $data['gambar'] = $imageName;
-        // Barang::create($data);
-
-        //input ke database
         $result = Barang::create([
             'kode_barang' => $kd_barang,
             'nama_barang' => $request->nama_barang,
@@ -211,7 +204,7 @@ class BarangController extends Controller
     public function deletebarang(Request $req)
     {
         Barang::find($req->id)->delete();
-        return redirect('admin/listbarang');
+        return redirect('admin/listbarang')->with('message', 'Sukses menghapus data barang');
     }
 
     // FUNGSI AMBIL ID BARANG
@@ -249,8 +242,9 @@ class BarangController extends Controller
             "harga_barang"=>$req->harga_barang
         ]);
 
-        return redirect('/admin/listbarang');
+        return redirect('/admin/listbarang')->with('message', 'Data barang berhasil diupdate');
     }
+
     //CARI BARANG PEGAWAI
     public function cariBarangPegawai(Request $request)
     {

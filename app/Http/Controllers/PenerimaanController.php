@@ -15,7 +15,7 @@ class PenerimaanController extends Controller
     public function list_pengiriman_pegawai()
     {
         $result = Pemesanan::where('cek_kirim',1)
-                                ->where('cek_terima',0)->get();
+                           ->where('cek_terima',0)->get();
         $param = [];
         $param['result'] = $result;
 

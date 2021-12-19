@@ -12,11 +12,12 @@
     <div class="container" style="background-color: white; padding:20px;">
 
         {{-- PESAN ERROR --}}
-        <div style="background-color: red; color:white; text-align:center">
+        <div style="background-color: lightgreen; color:black; text-align:center;">
             @if (Session::has('message'))
-            {{ Session::get('message') }}
+                {{ Session::get('message') }}
             @endif
         </div>
+
         <br>
 
         {{-- BUTTON TAMBAH --}}
@@ -60,8 +61,8 @@
                     <th style="text-align:center">Kategori</th>
                     <th style="text-align:center">Satuan</th>
                     <th style="text-align:center">Stok</th>
-                    <th style="text-align:center">Harga</th>
-                    <th style="text-align:center">Gambar</th>
+                    <th style="text-align:center;width:130px">Harga</th>
+                    <th style="text-align:center;width:130px;">Gambar</th>
                     <th style="text-align:center" colspan="2">Aksi</th>
                 </tr>
             </thead>
@@ -76,7 +77,7 @@
                             <td>{{$item->daftarkategori->nama_kategori}}</td>
                             <td>{{ $item->satuan_barang }}</td>
                             <td style="text-align:center">{{ $item->stok_barang }}</td>
-                            <td style="text-align:right">Rp. {{ $item->harga_barang }}</td>
+                            <td style="text-align:right">Rp. {{ $item->harga_barang }} ,-</td>
                             <td style=" text-align:center">
                                 <img class="img-fluid" style="width:100px; height:100px;" src="{{ asset('/img_barang/'.$item->gambar) }}" alt="">
                             </td>

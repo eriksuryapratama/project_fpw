@@ -49,12 +49,12 @@ class PemesananController extends Controller
         $data['kode_pemesanan'] = $kd_pemesanan;
         Pemesanan::create($data);
 
-        //kirim email
-        $cariemail = Supplier::where('kode_supplier','=',$request->kode_supplier)->first();
+        // //kirim email
+        // $cariemail = Supplier::where('kode_supplier','=',$request->kode_supplier)->first();
 
-        $pemesanan = Pemesanan::where('kode_supplier','=',$request->kode_supplier)->get();
+        // $pemesanan = Pemesanan::where('kode_supplier','=',$request->kode_supplier)->get();
 
-        Mail::to($cariemail->email)->send(new PemesananMail($pemesanan));
+        // Mail::to($cariemail->email)->send(new PemesananMail($pemesanan));
 
 
         if($data){
@@ -64,7 +64,40 @@ class PemesananController extends Controller
         }
     }
 
-    // FUNGSI TAMBAH PEMESANAN
+    // EMAIL SUPPLIER
+    public function cari_email()
+    {
+        $supplier = Supplier::all();
+        $data = [];
+        $data['supplier'] = $supplier;
+
+        return view('fitur_admin.form_tambah.cari_email', $data);
+    }
+
+    // KONFIRMASI PEMESANAN
+    public function konfirmasi_pemesanan(Request $request){
+        //setting rule
+        $rules = [
+            'kode_supplier' => 'required'
+        ];
+
+        //seting custom message
+        $custom_msg = [
+            'required' => ':attribute harus diisi!',
+        ];
+
+        //validasi
+        $this->validate($request, $rules, $custom_msg);
+
+        //kirim email
+        $cariemail = Supplier::where('kode_supplier','=',$request->kode_supplier)->first();
+        $pemesanan = Pemesanan::where('kode_supplier','=',$request->kode_supplier)->get();
+        Mail::to($cariemail->email)->send(new PemesananMail($pemesanan));
+
+        return redirect('/admin/listpemesanan')->with('message', 'Sukses mengirim email');
+    }
+
+    // FUNGSI AMBIL INDEX PEMESANAN
     public function index_pemesanan(Request $request)
     {
         $admin = Barang::find($request->id);
