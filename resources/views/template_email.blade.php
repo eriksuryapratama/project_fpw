@@ -15,14 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Langar&family=Russo+One&display=swap" rel="stylesheet">
     <title>Email</title>
 </head>
-<body style="background-color:#5b7d87">
-
-    @yield('judul')
-
-    <br>
-
+<body>
     @yield('konten')
-
-
 </body>
 </html>
